@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/patgraczyk/js_group_project#readme",
   "dependencies": {
+    "express": "^4.16.3",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   }
