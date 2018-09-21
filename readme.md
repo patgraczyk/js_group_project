@@ -13,7 +13,7 @@ A user should be able to:
 
 ## Example Extensions
 
-- show the CO2 footprint result before and after the user has updated the values.
+- show the CO2 footprint result before and after the user has updated the values .
 - present the educational aspects of the app including links to travel subpages, a map displaying local charge points and locations of the bikes [Edinburgh or London] 
 - calculate and visualise projections of CO2 savings based on a user's input.
 
