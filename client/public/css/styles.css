@@ -7,7 +7,12 @@ div.header h2 {
     margin: 0 auto;
     text-align: center;
     color: white;
+    font-family: 'Fugaz One', cursive;
 
+}
+
+h1 {
+    font-family: 'Signika Negative', sans-serif;
 }
 
 div.scrollmenu {
@@ -18,6 +23,7 @@ div.scrollmenu {
 }
 
 div.scrollmenu li {
+    font-family: 'Signika Negative', sans-serif;
     display: block;
     color: white;
 
@@ -29,7 +35,11 @@ div.scrollmenu li:hover {
     background-color: #777;
 }}
 
-#add-journey {
+#add-journey-form {
     display: flex;
     text-align: right;
+}
+
+#add-journey-form label {
+    font-family: 'Alegreya Sans', sans-serif;
 }
