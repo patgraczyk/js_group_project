@@ -1,0 +1,35 @@
+body {
+    background-color: darkseagreen;
+
+}
+
+div.header h2 {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+
+}
+
+div.scrollmenu {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+div.scrollmenu li {
+    display: block;
+    color: white;
+
+    padding: 14px;
+    text-decoration: none;
+}
+
+div.scrollmenu li:hover {
+    background-color: #777;
+}}
+
+#add-journey {
+    display: flex;
+    text-align: right;
+}
