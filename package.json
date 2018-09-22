@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha specs",
     "server:dev": "nodemon server/server.js",
-    "build": "webpack -w",
-    "test": "mocha specs"
+    "build": "webpack -w"
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,8 @@
   "homepage": "https://github.com/patgraczyk/js_group_project#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "mongodb": "^3.1.6",
+    "nodemon": "^1.18.4",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   },

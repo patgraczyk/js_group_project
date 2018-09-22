@@ -12,6 +12,8 @@ const Request = function (url) {
       method: 'POST',
       body: JSON.stringify(payload),
       headers: { 'Content-Type': 'application/json' }
+      // console.log(`Payload: ${payload}, posted to: ${this.url});
+      
     })
       .then((response) => response.json());
   };
