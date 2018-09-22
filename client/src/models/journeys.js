@@ -5,6 +5,7 @@ const Journeys = function(){
 this.request = new Request('/api/journeys');
 this.journeys = [];
 this.categories = [];
+
 }
 
 // ** GARY this is a simple GET request, this will be to extract categories, edit as you wish, uncomment when you want
@@ -43,7 +44,7 @@ this.categories = [];
 //     .catch((err) => console.error(err));
 // };
 //
-// This is a simple delete request, edit as you wish 
+// This is a simple delete request, edit as you wish
 // BucketList.prototype.delete = function(itemToDelete) {
 //   const id = itemToDelete._id;
 //   this.request
