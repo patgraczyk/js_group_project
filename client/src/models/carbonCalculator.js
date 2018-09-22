@@ -33,40 +33,40 @@ carbonCalculator.prototype.calculateEmissions = function(journeySubmitted) {
   // allJourneys.forEach(journey => {
     return journey.distance * this.getConversionFactor(journey) * journey.numberOfJourneys;
     // five is a place holder for the actual conversion factor
-  })
+  };
 //   return ;
 // }
 
 // starts a function with a data of all journeys
 // for each journey if fuel type and vehicle type are right returns a conversion factor
-carbonCalculator.prototype.getConversionFactor = function(journeySubmitted){
-    if journey.vehicle === 'car' {
-      return this.carJourneyFactor(journeySubmitted)
-    }
-    else if (journey.vehicle === 'motorbike' {
-      // return this.motorbikeJourneyFactor(journeySubmitted)
-      return 0.11529
-    }
-    else if (journey.vehicle === 'plane') {
-      return this.planeJourneyFactor(journeySubmitted)
-    }
-    else {
-      return travelInformation.ferry_emissions.conversion_factor
-    }
-  return conversionFactor;
-}
+// carbonCalculator.prototype.getConversionFactor = function(journeySubmitted){
+//     if journey.vehicle === 'car' {
+//       return this.carJourneyFactor(journeySubmitted)
+//     }
+//     else if (journey.vehicle === 'motorbike' {
+//       // return this.motorbikeJourneyFactor(journeySubmitted)
+//       return 0.11529
+//     }
+//     else if (journey.vehicle === 'plane') {
+//       return this.planeJourneyFactor(journeySubmitted)
+//     }
+//     else {
+//       return travelInformation.ferry_emissions.conversion_factor
+//     }
+//   return conversionFactor;
+// }
 
-carbonCalculator.prototype.carJourneyFactor(journey){
-  if journey.fuelType === 'petrol' {
-    return 0.11529;
-  }
-  if journey.fuelType === 'diesel' {
-    return 0.11145;
-  }
-  if journey.fuelType === 'hybrid'{
-    return 2.2;
-  }
-}
+// carbonCalculator.prototype.carJourneyFactor(journey){
+//   if journey.fuelType === 'petrol' {
+//     return 0.11529;
+//   }
+//   if journey.fuelType === 'diesel' {
+//     return 0.11145;
+//   }
+//   if journey.fuelType === 'hybrid'{
+//     return 2.2;
+//   }
+// }
 
 
 // creates a hash of all emissions by fuel type
