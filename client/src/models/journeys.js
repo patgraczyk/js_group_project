@@ -2,7 +2,7 @@ const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const Journeys = function(){
-    this.request = new Request('/api/journeys')
+    this.request = new Request('http://localhost:3000/api/journeys')
     this.journeys = [];
     this.categories = [];
 }
