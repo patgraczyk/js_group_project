@@ -78,3 +78,12 @@ nav {
     font-family: 'Alegreya Sans', sans-serif;
 }
 
+#add-journey-form input[type="radio"]{
+    display: inline;
+    margin: 0 5px;
+}
+
+#add-journey-form p {
+    margin: 5px 0;
+}
+
