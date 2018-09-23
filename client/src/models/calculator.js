@@ -105,14 +105,35 @@ Calculator.prototype.splitCalculationByFuel = function(allJourneys) {
   const emissionsByFuelType = {}
   for (const journey of allJourneys) {
     if (emissionsByFuelType[journey.fuel]) {
-      emissionsByFuelType[journey.fuel] += this.calculateEmissions(journey);
+      emissionsByFuelType[journey.fuel] += 0;
     }
     else {
-      emissionsByFuelType[journey.fuel] = 0;
+      emissionsByFuelType[journey.fuel] = this.calculateEmissions(journey);
     }
   }
   return emissionsByFuelType;
 }
+
+
+
+// Park.prototype.numberOfDinosaursByDiet = function () {
+//   const numberOfDinosaursByDiet = {};
+
+//   for (const dinosaur of this.dinosaurs) {
+//     if (numberOfDinosaursByDiet[dinosaur.diet]) {
+//       numberOfDinosaursByDiet[dinosaur.diet] += 1;
+//     }
+//     else {
+//       numberOfDinosaursByDiet[dinosaur.diet] = 1;
+//     }
+//   }
+
+//   return numberOfDinosaursByDiet;
+// }
+
+
+
+
 
 
 // gets on hold of the data from the DB

@@ -12,7 +12,7 @@ describe("Calculator", function(){
   beforeEach(function(){
     journey1 = new Journeys(30, 'car', 'diesel');
     journey2 = new Journeys(30, 'motorbike', 'petrol');
-    // journey3 = new Journey();
+    // journey3 = new Journey(100, 'ferry', 'petrol');
     // journey4 = new Journey();
 
     calculator = new Calculator();
@@ -39,7 +39,7 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
-  xit('should divide emissions by fuel type', function(){
+  it('should divide emissions by fuel type', function(){
     const actual = calculator.splitCalculationByFuel([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
