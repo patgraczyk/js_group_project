@@ -1,13 +1,13 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
-const carbonCalculator = function(){
+const Calculator = function(){
 this.conversionFactors = [];
 }
 
 
 // gets on hold of the data of all journeys
-carbonCalculator.prototype.bindEvents = function (){
+Calculator.prototype.bindEvents = function (){
   PubSub.subscribe('Journeys:all-data-loaded', (evt) => {
     const carbonData = this.calculateTotalEmissions(evt.detail);
     const carnbonDataFuel = this.splitCalculationByFuel(evt.detail);
@@ -17,7 +17,7 @@ carbonCalculator.prototype.bindEvents = function (){
 }
 
 // takes a total of all journeys and looks at the overall emissions
-carbonCalculator.prototype.calculateTotalEmissions = function(allJourneys){
+Calculator.prototype.calculateTotalEmissions = function(allJourneys){
   let emissionsTotal = 0;
   for (journey in allJourneys) {
     emissionsTotal += this.calculateEmissions(journey);
@@ -28,7 +28,7 @@ carbonCalculator.prototype.calculateTotalEmissions = function(allJourneys){
 // iterates over every journey to calculate emissions
 // runs a function to get conversion factor for the journey
 // does the calculation to calculate the actual emissions
-carbonCalculator.prototype.calculateEmissions = function(journeySubmitted) {
+Calculator.prototype.calculateEmissions = function(journeySubmitted) {
   // this.getConversionFactor(allJourneys)
   // allJourneys.forEach(journey => {
     return journey.distance * this.getConversionFactor(journey) * journey.numberOfJourneys;
@@ -95,4 +95,4 @@ carbonCalculator.prototype.calculateEmissions = function(journeySubmitted) {
 // };
 
 
-module.exports = carbonCalculator;
+module.exports = Calculator;

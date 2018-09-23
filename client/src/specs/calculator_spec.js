@@ -1,8 +1,8 @@
 const assert = require('assert');
-const carbonCalculator = require('../models/carbonCalculator.js');
+const Calculator = require('../models/Calculator.js');
 const Journeys = require('../models/journeys.js');
 
-describe("carbonCalculator", function(){
+describe("Calculator", function(){
 
   let journey1;
   // let journey2;
@@ -15,12 +15,12 @@ describe("carbonCalculator", function(){
     // journey3 = new Journey();
     // journey4 = new Journey();
 
-    carbonCalculator = new CarbonCalculator();
+    calculator = new Calculator();
     // check if capital letter
   })
 
   it("should calculate emissions of a single journey", function(){
-    const actual = carbonCalculator.calculateEmissions(journey1);
+    const actual = calculator.calculateEmissions(journey1);
     assert.strictEqual(actual, 456);
   })
 
