@@ -5,13 +5,13 @@ const Journeys = require('../models/journeys.js');
 describe("Calculator", function(){
 
   let journey1;
-  // let journey2;
+  let journey2;
   // let journey3;
   // let journey4;
 
   beforeEach(function(){
-    journey1 = new Journeys(30);
-    // journey2 = new Journey();
+    journey1 = new Journeys(30, 'car', 'diesel');
+    journey2 = new Journeys(30, 'motorbike', 'petrol');
     // journey3 = new Journey();
     // journey4 = new Journey();
 
@@ -21,7 +21,21 @@ describe("Calculator", function(){
 
   it("should calculate emissions of a single journey", function(){
     const actual = calculator.calculateEmissions(journey1);
-    assert.strictEqual(actual, 30);
+    assert.strictEqual(actual, 3.3434999999999997);
   })
 
+  it("should get the conversion factor of a car", function(){
+    const actual = calculator.getConversionFactor(journey1);
+    assert.strictEqual(actual, 0.11145);
+  })
+
+  it("should get the conversion factor of a motorbike", function(){
+    const actual = calculator.getConversionFactor(journey2);
+    assert.strictEqual(actual, 0.12953);
+  })
+
+  it("should get the total emissions of all journeys", function(){
+    const actual = calculator.calculateTotalEmissions([journey1, journey2]);
+    assert.strictEqual(actual, 7.2294)
+  })
 });

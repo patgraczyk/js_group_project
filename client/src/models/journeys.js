@@ -2,12 +2,13 @@ const Request = require('../../helpers/request.js');
 const PubSub = require('../../helpers/pub_sub.js');
 
 
-const Journeys = function(distance){
+const Journeys = function(distance, vehicle, fuel){
 this.request = new Request('/api/journeys');
 this.journeys = [];
 this.categories = [];
 this.distance = distance;
-
+this.vehicle = vehicle;
+this.fuel = fuel;
 }
 
 // ** GARY this is a simple GET request, this will be to extract categories, edit as you wish, uncomment when you want
