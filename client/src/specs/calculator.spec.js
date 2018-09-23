@@ -10,7 +10,7 @@ describe("Calculator", function(){
   // let journey4;
 
   beforeEach(function(){
-    journey1 = new Journey("car", 30, "petrol");
+    journey1 = new Journeys(30);
     // journey2 = new Journey();
     // journey3 = new Journey();
     // journey4 = new Journey();
@@ -21,7 +21,7 @@ describe("Calculator", function(){
 
   it("should calculate emissions of a single journey", function(){
     const actual = calculator.calculateEmissions(journey1);
-    assert.strictEqual(actual, 456);
+    assert.strictEqual(actual, 30);
   })
 
 });

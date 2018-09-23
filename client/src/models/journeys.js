@@ -1,10 +1,12 @@
-const Request = require('../helpers/request.js');
-const PubSub = require('../helpers/pub_sub.js');
+const Request = require('../../helpers/request.js');
+const PubSub = require('../../helpers/pub_sub.js');
 
-const Journeys = function(){
+
+const Journeys = function(distance){
 this.request = new Request('/api/journeys');
 this.journeys = [];
 this.categories = [];
+this.distance = distance;
 
 }
 

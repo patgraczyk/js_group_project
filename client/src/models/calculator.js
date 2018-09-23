@@ -1,5 +1,5 @@
-const Request = require('../helpers/request.js');
-const PubSub = require('../helpers/pub_sub.js');
+const Request = require('../../helpers/request.js');
+const PubSub = require('../../helpers/pub_sub.js');
 
 const Calculator = function(){
 this.conversionFactors = [];
@@ -17,25 +17,28 @@ Calculator.prototype.bindEvents = function (){
 }
 
 // takes a total of all journeys and looks at the overall emissions
-Calculator.prototype.calculateTotalEmissions = function(allJourneys){
-  let emissionsTotal = 0;
-  for (journey in allJourneys) {
-    emissionsTotal += this.calculateEmissions(journey);
-  }
-  return emissionsTotal;
-};
+// Calculator.prototype.calculateTotalEmissions = function(allJourneys){
+//   let emissionsTotal = 0;
+//   for (journey in allJourneys) {
+//     emissionsTotal += this.calculateEmissions(journey);
+//   }
+//   return emissionsTotal;
+// };
+
+
+Calculator.prototype.calculateEmissions = function(journey) {
+    return journey.distance *1;
+  };
+
+  // return journey.distance * this.getConversionFactor(journey) * journey.numberOfJourneys;
 
 // iterates over every journey to calculate emissions
 // runs a function to get conversion factor for the journey
 // does the calculation to calculate the actual emissions
-Calculator.prototype.calculateEmissions = function(journeySubmitted) {
   // this.getConversionFactor(allJourneys)
   // allJourneys.forEach(journey => {
-    return journey.distance * this.getConversionFactor(journey) * journey.numberOfJourneys;
     // five is a place holder for the actual conversion factor
-  };
-//   return ;
-// }
+
 
 // starts a function with a data of all journeys
 // for each journey if fuel type and vehicle type are right returns a conversion factor
