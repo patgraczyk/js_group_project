@@ -42,7 +42,7 @@ Journeys.prototype.postJourney = function (newJourney) {
         PubSub.publish('Journeys:data-loaded', journeys);
       })
       .catch(console.error);
-  };
+};
 
 //  *GARY thisis a simple UPDATE request, edit as you wish
 // Journeys.prototype.update = function(editedJourney) {

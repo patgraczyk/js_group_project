@@ -1,3 +1,7 @@
+* {
+    padding: 0;
+    margin: 0;
+}
 body {
     background: linear-gradient(to bottom right, #4CD180 0%,#227386 100%);
     width: 100%;
@@ -51,14 +55,26 @@ nav {
 }
 
 #add-journey {
-    margin-left: 200px;
-    float: left;
-    text-align: center;
-    margin-right: 250px;
     display: block;
-    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+}
+
+#add-journey-form {
+    margin: 20px 0;
+}
+
+#add-journey h1 {
+    padding-top: 50px;
+}
+
+#add-journey-form input, select {
+    display: block;
+    margin: 10px auto;
 }
 
 #add-journey-form label {
     font-family: 'Alegreya Sans', sans-serif;
 }
+
