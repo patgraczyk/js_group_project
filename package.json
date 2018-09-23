@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "mocha specs",
+    "test": "mocha client/public/src/specs",
     "server:dev": "nodemon server/server.js",
     "build": "webpack -w"
   },
