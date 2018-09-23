@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Calculator = require('../models/Calculator.js');
+const Calculator = require('../models/calculator.js');
 const Journeys = require('../models/journeys.js');
 
 describe("Calculator", function(){
