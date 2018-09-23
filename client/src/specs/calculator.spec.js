@@ -44,6 +44,11 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
+  it('should divide emissions by vehicle type', function(){
+    const actual = calculator.splitCalculationByModeOfTransport([journey1, journey2]);
+    assert.strictEqual(actual, 7.2294)
+  })
+
   it('should be able to calculate average emissions per journey', function(){
     const actual = calculator.calculateAvarageEmissionsPerJourney([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
@@ -68,5 +73,7 @@ describe("Calculator", function(){
     const actual = calculator.tenYearsDistanceProjection([journey1, journey2]);
     assert.strictEqual(actual, 219000);
   })
+
+  
 
 });
