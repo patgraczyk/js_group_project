@@ -39,7 +39,7 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
-  it('should divide emissions by fuel type', function(){
+  xit('should divide emissions by fuel type', function(){
     const actual = calculator.splitCalculationByFuel([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
@@ -50,7 +50,23 @@ describe("Calculator", function(){
   })
 
   it('should be able to calculate yearly emissions projections', function(){
-    const actual = calculator.yearlyProjection([journey1, journey2]);
+    const actual = calculator.yearlyEmissionProjection([journey1, journey2]);
     assert.strictEqual(actual, 2638.731)
   })
+
+  it('should be able to calculate total distance', function(){
+    const actual = calculator.calculateTotalDistance([journey1, journey2]);
+    assert.strictEqual(actual, 60);
+  })
+
+  it('should be able to calculate yearly distance projections', function(){
+    const actual = calculator.yearlyDistanceProjection([journey1, journey2]);
+    assert.strictEqual(actual, 21900);
+  })
+
+  it('should be able to calculate ten year distance projections', function(){
+    const actual = calculator.tenYearsDistanceProjection([journey1, journey2]);
+    assert.strictEqual(actual, 219000);
+  })
+
 });

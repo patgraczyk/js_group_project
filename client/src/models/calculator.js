@@ -24,6 +24,14 @@ Calculator.prototype.calculateTotalEmissions = function(allJourneys){
   return emissionsTotal;
 };
 
+Calculator.prototype.calculateTotalDistance = function(allJourneys){
+  let distanceTotal = 0;
+  allJourneys.forEach ((journey )=> {
+    distanceTotal += journey.distance
+  })
+  return distanceTotal;
+}
+
 // once form updated replace one with journey.numberOfJourneys;
 Calculator.prototype.calculateEmissions = function(journey) {
     return journey.distance *1 * this.getConversionFactor(journey) *1;
@@ -76,10 +84,21 @@ Calculator.prototype.calculateAvarageEmissionsPerJourney = function(allJourneys)
 }
 
 
-Calculator.prototype.yearlyProjection = function(allJourneys){
+Calculator.prototype.yearlyEmissionProjection = function(allJourneys){
   return this.calculateTotalEmissions(allJourneys) * 365;
 }
 
+Calculator.prototype.yearlyDistanceProjection = function(allJourneys){
+  return this.calculateTotalDistance(allJourneys) * 365;
+}
+
+Calculator.prototype.tenYearsEmissionProjection = function(allJourneys){
+  return this.yearlyProjection(allJourneys) * 10;
+}
+
+Calculator.prototype.tenYearsDistanceProjection = function(allJourneys){
+  return this.yearlyDistanceProjection(allJourneys) * 10;
+}
 
 // creates a hash of all emissions by fuel type
 Calculator.prototype.splitCalculationByFuel = function(allJourneys) {
