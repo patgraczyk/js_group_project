@@ -38,4 +38,19 @@ describe("Calculator", function(){
     const actual = calculator.calculateTotalEmissions([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
+
+  it('should divide emissions by fuel type', function(){
+    const actual = calculator.splitCalculationByFuel([journey1, journey2]);
+    assert.strictEqual(actual, 7.2294)
+  })
+
+  it('should be able to calculate average emissions per journey', function(){
+    const actual = calculator.calculateAvarageEmissionsPerJourney([journey1, journey2]);
+    assert.strictEqual(actual, 7.2294)
+  })
+
+  it('should be able to calculate yearly emissions projections', function(){
+    const actual = calculator.yearlyProjection([journey1, journey2]);
+    assert.strictEqual(actual, 2638.731)
+  })
 });

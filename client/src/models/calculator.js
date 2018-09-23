@@ -5,7 +5,6 @@ const Calculator = function(){
 this.conversionFactors = [];
 }
 
-
 // gets on hold of the data of all journeys
 Calculator.prototype.bindEvents = function (){
   PubSub.subscribe('Journeys:all-data-loaded', (evt) => {
@@ -67,24 +66,35 @@ Calculator.prototype.airplaneJourneyFactor = function(journeySubmitted){
     return 0.11145;
   }
 };
+// this is to fix
+Calculator.prototype.calculateAvarageEmissionsPerJourney = function(allJourneys){
+  let averageEmissions = 0; 
+  for (journey of allJourneys) {
+    (averageEmissions += this.calculateEmissions(journey)) / allJourneys.size
+  }
+  return averageEmissions ;
+}
 
 
+Calculator.prototype.yearlyProjection = function(allJourneys){
+  return this.calculateTotalEmissions(allJourneys) * 365;
+}
 
 
 // creates a hash of all emissions by fuel type
-// carbonCalculator.prototype.splitCalculationByFuel = function(allJourneys) {
-//   const emissionsByFuelType = {}
-//   for (const journey of allJourneys) {
-//     if (emissionsByFuelType[journey.fuelType]) {
-//       emissionsByFuelType[journey.fuelType] += journey.calculateEmissions;
-//     }
-//     else {
-//       emissionsByFuelType[journey.fuelType] = 0;
-//     }
-//   }
-//   return emissionsByFuelType;
-// }
-// }
+Calculator.prototype.splitCalculationByFuel = function(allJourneys) {
+  const emissionsByFuelType = {}
+  for (const journey of allJourneys) {
+    if (emissionsByFuelType[journey.fuel]) {
+      emissionsByFuelType[journey.fuel] += this.calculateEmissions(journey);
+    }
+    else {
+      emissionsByFuelType[journey.fuel] = 0;
+    }
+  }
+  return emissionsByFuelType;
+}
+
 
 // gets on hold of the data from the DB
 // CarbonCalculator.prototype.allEmissionsConversionFactors = function() {
