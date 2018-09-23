@@ -10,8 +10,8 @@ describe("Calculator", function(){
   // let journey4;
 
   beforeEach(function(){
-    journey1 = new Journeys(30, 'car', 'diesel');
-    journey2 = new Journeys(30, 'motorbike', 'petrol');
+    journey1 = new Journeys(30, 'car', 'diesel', 'business');
+    journey2 = new Journeys(30, 'motorbike', 'petrol', 'leisure');
     // journey3 = new Journey(100, 'ferry', 'petrol');
     // journey4 = new Journey();
 
@@ -19,6 +19,7 @@ describe("Calculator", function(){
     // check if capital letter
   })
 
+  //****** basic tests ******** 
   it("should calculate emissions of a single journey", function(){
     const actual = calculator.calculateEmissions(journey1);
     assert.strictEqual(actual, 3.3434999999999997);
@@ -39,6 +40,13 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
+  it('should be able to calculate total distance', function(){
+    const actual = calculator.calculateTotalDistance([journey1, journey2]);
+    assert.strictEqual(actual, 60);
+  })
+
+
+  // ******** filtering tests ********
   it('should divide emissions by fuel type', function(){
     const actual = calculator.splitCalculationByFuel([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
@@ -49,19 +57,23 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
+  it('should divide emissions by use type', function(){
+    const actual = calculator.splitCalculationByUseType([journey1, journey2]);
+    assert.strictEqual(actual, 7.2294)
+  })
+
   it('should be able to calculate average emissions per journey', function(){
     const actual = calculator.calculateAvarageEmissionsPerJourney([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
 
+  
+
+ // ******** projection tests ********
+
   it('should be able to calculate yearly emissions projections', function(){
     const actual = calculator.yearlyEmissionProjection([journey1, journey2]);
     assert.strictEqual(actual, 2638.731)
-  })
-
-  it('should be able to calculate total distance', function(){
-    const actual = calculator.calculateTotalDistance([journey1, journey2]);
-    assert.strictEqual(actual, 60);
   })
 
   it('should be able to calculate yearly distance projections', function(){
@@ -73,7 +85,5 @@ describe("Calculator", function(){
     const actual = calculator.tenYearsDistanceProjection([journey1, journey2]);
     assert.strictEqual(actual, 219000);
   })
-
-  
 
 });

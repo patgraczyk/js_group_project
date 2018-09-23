@@ -128,6 +128,19 @@ Calculator.prototype.splitCalculationByModeOfTransport = function(allJourneys) {
   return emissionsByVehicleType;
 }
 
+Calculator.prototype.splitCalculationByUseType= function(allJourneys) {
+  const emissionsByUseType = {};
+
+  for (const journey of allJourneys) {
+    if (emissionsByUseType[journey.useType]) {
+      emissionsByUseType[journey.useType] += this.calculateEmissions(journey);
+    }
+    else {
+      emissionsByUseType[journey.useType] = this.calculateEmissions(journey);
+    }
+  }
+  return emissionsByUseType;
+}
 
 
 
