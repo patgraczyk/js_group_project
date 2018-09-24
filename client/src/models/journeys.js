@@ -1,16 +1,33 @@
-const Request = require('../../helpers/request.js');
-const PubSub = require('../../helpers/pub_sub.js');
+const Request = require('../helpers/request.js');
+const PubSub = require('../helpers/pub_sub.js');
 
 
-const Journeys = function(distance, vehicle, fuel, useType){
-this.request = new Request('/api/journeys');
+const Journeys = function(distance, vehicle, fuel){
+this.request = new Request('http://localhost:3000/api/journeys')
 this.journeys = [];
 this.categories = [];
 this.distance = distance;
 this.vehicle = vehicle;
 this.fuel = fuel;
-this.useType = useType;
+// this.useType = useType;
 }
+
+Journeys.prototype.bindEvents = function () {
+    PubSub.subscribe('Form-view:journey-submitted', (event) => {
+        this.postJourney(event.detail);
+        console.log(`journeys received event: ${event.detail}`);
+    });
+
+};
+
+Journeys.prototype.getData = function () {
+    this.request.get()
+      .then((journeys) => {
+        PubSub.publish('Journeys:data-loaded', journeys);
+        console.log(`Journeys published all data: ${journeys}`)
+      })
+      .catch(console.error);
+};
 
 // ** GARY this is a simple GET request, this will be to extract categories, edit as you wish, uncomment when you want
 
@@ -24,17 +41,13 @@ this.useType = useType;
 //     .catch((err) => console.error(err));
 // };
 
-
-// ** GARY this is a simple POST request, to POST a new journey; edit as you wish, uncomment when needed;
-// Journeys.prototype.add = function(newJourney) {
-//   this.request
-//     .post(newJourney)
-//     .then((allJourneys) => {
-//       this.journeys = allJourneys;
-//       PubSub.publish('Journeys:all-data-loaded', this.journeys);
-//     })
-//     .catch((err) => console.error(err));
-// };
+Journeys.prototype.postJourney = function (newJourney) {
+    this.request.post(newJourney)
+      .then((journeys) => {
+        PubSub.publish('Journeys:data-loaded', journeys);
+      })
+      .catch(console.error);
+};
 
 //  *GARY thisis a simple UPDATE request, edit as you wish
 // Journeys.prototype.update = function(editedJourney) {

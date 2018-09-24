@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: linear-gradient(to bottom right, #4CD180 0%,#227386 100%);
+    width: 100%;
+    margin: 0 auto;
+}
+
+.logo-wrapper {
+    position: relative;
+    background-color: #5477A0;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0px 6px 6px 0px rgba(0,0,0,0.14);
+    z-index: 1;
+}
+
+.logo-wrapper h2 {
+    padding-top: 10px;
+    padding-left: 30px;
+    color: white;
+    font-family: 'Fugaz One', cursive;
+    letter-spacing: 3px;
+    font-size: 50px; 
+
+}
+
+h1 {
+    font-family: 'Signika Negative', sans-serif;
+}
+
+nav {
+    float: left;
+}
+
+.scrollmenu {
+    background-color: #5477A0;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    width: 165px;
+    height: 100%;
+    z-index: -1;
+}
+
+.scrollmenu li {
+    font-family: 'Signika Negative', sans-serif;
+    display: block;
+    color: white;
+    text-align: left;
+    padding: 14px;
+    text-decoration: none;
+}
+
+#add-journey {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+}
+
+#add-journey-form {
+    margin: 20px 0;
+}
+
+#add-journey h1 {
+    padding-top: 50px;
+}
+
+#add-journey-form input, select {
+    display: block;
+    margin: 10px auto;
+}
+
+#add-journey-form label {
+    font-family: 'Alegreya Sans', sans-serif;
+}
+

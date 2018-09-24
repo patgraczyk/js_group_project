@@ -1,5 +1,5 @@
-const Request = require('../../helpers/request.js');
-const PubSub = require('../../helpers/pub_sub.js');
+const Request = require('../helpers/request.js');
+const PubSub = require('../helpers/pub_sub.js');
 
 const Calculator = function(){
 this.conversionFactors = [];
@@ -7,18 +7,22 @@ this.conversionFactors = [];
 
 // gets on hold of the data of all journeys
 Calculator.prototype.bindEvents = function (){
-  PubSub.subscribe('Journeys:all-data-loaded', (evt) => {
+  PubSub.subscribe('Journeys:data-loaded', (evt) => {
+
     const carbonData = this.calculateTotalEmissions(evt.detail);
+    console.log(evt.detail)
+    console.log(carbonData)
     const carnbonDataFuel = this.splitCalculationByFuel(evt.detail);
   });
-  PubSub.publish('Journeys:carbon-data-loaded', carbonData);
-  PubSub.publish('Journeys:carbon-data-by-fuel', carnbonDataFuel);
+  // PubSub.publish('Journeys:carbon-data-loaded', carbonData);
+  // PubSub.publish('Journeys:carbon-data-by-fuel', carnbonDataFuel);
 }
 
 // takes a total of all journeys and looks at the overall emissions
 Calculator.prototype.calculateTotalEmissions = function(allJourneys){
   let emissionsTotal = 0;
   allJourneys.forEach ((journey )=> {
+    console.log(journey)
     emissionsTotal += this.calculateEmissions(journey);
   })
   return emissionsTotal;
@@ -34,35 +38,37 @@ Calculator.prototype.calculateTotalDistance = function(allJourneys){
 
 // once form updated replace one with journey.numberOfJourneys;
 Calculator.prototype.calculateEmissions = function(journey) {
-    return journey.distance *1 * this.getConversionFactor(journey) *1;
+    return journey.distance  * this.getConversionFactor(journey);
   };
 
 // starts a function with a data of all journeys
 // for each journey if fuel type and vehicle type are right returns a conversion factor
 
 Calculator.prototype.getConversionFactor = function(journeySubmitted){
-    if (journeySubmitted.vehicle === 'car') {
-      return this.carJourneyFactor(journeySubmitted)
-    } else if (journeySubmitted.vehicle === 'airplane') {
+  console.log(journeySubmitted.vehicleType)
+    if (journeySubmitted.vehicleType === 'car') {
+      // return this.carJourneyFactor(journeySubmitted)
+      return 45
+    } else if (journeySubmitted.vehicleType === 'airplane') {
       return 0.11529
     }
-      else if (journeySubmitted.vehicle === 'train') {
+      else if (journeySubmitted.vehicleType === 'train') {
       // return this.trainJourneyFactor(journeySubmitted)
       return 0.1465
-    } else if (journeySubmitted.vehicle === 'ferry') {
+    } else if (journeySubmitted.vehicleType === 'ferry') {
       return 0.12953
-    } else if (journeySubmitted.vehicle === 'motorbike'){
+    } else if (journeySubmitted.vehicleType === 'motorbike'){
       return 0.12953
     }
   }
 
-// emissions of a car / fuel type
+// emissions of a car / fuel type / this part does not link yet
 Calculator.prototype.carJourneyFactor = function(journeySubmitted){
-  if (journeySubmitted.fuel === 'petrol') {
+  if (journeySubmitted.fuelType === 'Petrol') {
     return 0.11529;
-  } else if (journeySubmitted.fuel === 'diesel') {
+  } else if (journeySubmitted.fuelType === 'Diesel') {
     return 0.11145;
-  } else if (journeySubmitted.fuel === 'hybrid') {
+  } else if (journeySubmitted.fuelType === 'Hybrid') {
     return 2.2 +0.00622;
   }
 };

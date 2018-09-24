@@ -1,7 +1,7 @@
 {
   "name": "js_group_project",
   "version": "1.0.0",
-  "description": "You have been approached by the local city council that is trying to encourage people to travel more sustainably. Your task is to build an app that will have a CO2 footprint checker that calculates a user's CO2 footprint based on their travel type and would encourag people to travel more sustainably.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
@@ -27,6 +27,6 @@
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
-    "mocha": "^5.2.0"
+    "nodemon": "^1.18.4"
   }
 }
