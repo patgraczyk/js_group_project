@@ -6,16 +6,21 @@ const JourneysImpactView = require('./views/journeys_impact_view');
 
 document.addEventListener ('DOMContentLoaded', () => {
   console.log('js loaded')
-  
+
   const journeys = new Journeys();
   journeys.bindEvents();
   journeys.getData();
   
-  const journeysForm = document.querySelector('form#add-journey-form');
-  const journeysFormView = new JourneysFormView(journeysForm);
-  journeysFormView.bindEvents();
+  // const viewRenderElement = document.querySelector('#render-view');
+  // const journeysFormView = new JourneysFormView(viewRenderElement);
+  // journeysFormView.bindEvents();
 
   const calclculator = new Calculator();
   calclculator.bindEvents();
+
+  const allRenderElement = document.querySelector('#render-view')
+  const journeysAllView = new JourneysAllView(allRenderElement);
+  journeysAllView.bindEvents();
+
 
 }) 
