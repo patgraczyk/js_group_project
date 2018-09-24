@@ -47,8 +47,19 @@
               </select>
 
               <label for="distance">Distance:</label>
-              <input type="text" name="distance"/><br/>
+              <input type="text" name="distance"/>
               
+              <p>Was this distance in miles or km?</p>
+              <label for="km">KM</label>
+              <input id="unit-km" type="radio" name="unit" value="KM" checked>
+              <label for="miles">Miles</label>
+              <input id="unit-miles" type="radio" name="unit" value="Miles">
+
+              <p>Was this journey optional?</p>
+              <label for="optional-yes">Yes</label>
+              <input id="optional" type="radio" name="optional" value="Yes" checked>
+              <label for="optional-no">No</label>
+              <input id="optional-no" type="radio" name="optional" value="No">
           <input type="submit" value="Save" id="save"/>
         </form>
 
