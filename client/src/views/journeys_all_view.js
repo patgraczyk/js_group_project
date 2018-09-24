@@ -11,6 +11,7 @@ JourneysAllView.prototype.bindEvents = function () {
   });
 };
 
+
 JourneysAllView.prototype.renderFormView = function(allJourneyData){
   const newList = document.createElement('ul');
   allJourneyData.forEach(journey => {
