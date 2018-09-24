@@ -7,12 +7,12 @@ You have been approached by the local city council that is trying to encourage p
 A user should be able to:
 
 - to submit values for various aspects of their travel and view their CO2 footprint. You'll need to create your own tested model to calculate this.
-- to update the values to see the effect on their CO2 footprint.
+- to update the values to see the effect on their CO2 footprint
 - view the CO2 footprint result in a visually interesting ways.
 
 
 ## Example Extensions
-
+- display the emissions by the vehicle and fuel type
 - show the CO2 footprint result before and after the user has updated the values .
 - present the educational aspects of the app including links to travel subpages, a map displaying local charge points and locations of the bikes [Edinburgh or London] 
 - calculate and visualise projections of CO2 savings based on a user's input.

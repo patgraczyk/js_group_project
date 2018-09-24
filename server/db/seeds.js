@@ -1,11 +1,13 @@
 // seed data here
 
 use travelInformation;
+// db.dropDatabase();
+
 
 db.journeys.insertMany([
   {
     distance: "20",
-    vehcileType: "Small Car",
-    fuelType: "Petrol"
+    vehicleType: "car",
+    fuelType: "petrol"
   }
 ]);

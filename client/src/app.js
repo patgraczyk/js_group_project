@@ -1,4 +1,4 @@
-const CarbonCalculator = require('./models/carbonCalculator');
+const Calculator = require('./models/Calculator');
 const Journeys = require('./models/journeys');
 const JourneysAllView = require('./views/journeys_all_view');
 const JourneysFormView = require('./views/journeys_form_view');
@@ -15,5 +15,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   const journeysFormView = new JourneysFormView(journeysForm);
   journeysFormView.bindEvents();
 
+  const calclculator = new Calculator();
+  calclculator.bindEvents();
 
 }) 

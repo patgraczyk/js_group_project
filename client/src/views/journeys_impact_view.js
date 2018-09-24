@@ -6,4 +6,14 @@ const JourneysImpactView = function(){
 }
 
 module.exports = JourneysImpactView;
+// main display
 // subscribe to: 'Journeys:all-data-loaded'
+JourneysImpactView.prototype.bindEvents = function(){
+  PubSub.subscribe('Journeys:carbon-data-loaded')
+  PubSub.subscribe('Journeys:carbon-data-by-fuel')
+}
+
+
+//  
+
+// text content, grab, display

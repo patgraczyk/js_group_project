@@ -1,10 +1,15 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
-const Journeys = function(){
-    this.request = new Request('http://localhost:3000/api/journeys')
-    this.journeys = [];
-    this.categories = [];
+
+const Journeys = function(distance, vehicle, fuel){
+this.request = new Request('http://localhost:3000/api/journeys')
+this.journeys = [];
+this.categories = [];
+this.distance = distance;
+this.vehicle = vehicle;
+this.fuel = fuel;
+// this.useType = useType;
 }
 
 Journeys.prototype.bindEvents = function () {
@@ -56,7 +61,7 @@ Journeys.prototype.postJourney = function (newJourney) {
 //     .catch((err) => console.error(err));
 // };
 //
-// This is a simple delete request, edit as you wish 
+// This is a simple delete request, edit as you wish
 // BucketList.prototype.delete = function(itemToDelete) {
 //   const id = itemToDelete._id;
 //   this.request

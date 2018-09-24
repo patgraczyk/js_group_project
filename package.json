@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "test": "mocha specs",
+    "test": "mocha **/*.spec.js",
     "server:dev": "nodemon server/server.js",
     "build": "webpack -w"
   },
@@ -21,8 +21,8 @@
   "homepage": "https://github.com/patgraczyk/js_group_project#readme",
   "dependencies": {
     "express": "^4.16.3",
-    "mongod": "^2.0.0",
     "mongodb": "^3.1.6",
+    "nodemon": "^1.18.4",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
   },
