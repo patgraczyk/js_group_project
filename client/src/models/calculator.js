@@ -10,12 +10,20 @@ Calculator.prototype.bindEvents = function (){
   PubSub.subscribe('Journeys:data-loaded', (evt) => {
 
     const carbonData = this.calculateTotalEmissions(evt.detail);
-    console.log(evt.detail)
-    console.log(carbonData)
-    const carnbonDataFuel = this.splitCalculationByFuel(evt.detail);
+    const carbonDataDistance = this.calculateTotalDistance(evt.detail);
+    const carbonDataProjections = this.yearlyEmissionProjection(evt.detail);
+    const emissionsByVehicleType = this.splitCalculationByModeOfTransport(evt.detail);
+    const emissionsByFuelType = this.splitCalculationByFuel(evt.detail);
+
+
+    PubSub.publish('Journeys:carbon-data-loaded', carbonData);
+    PubSub.publish('Journeys:carbon-data-distance', carbonDataDistance);
+    PubSub.publish('Journeys:carbon-data-projections', carbonDataProjections);
+    PubSub.publish('Journeys:carbon-data-by-vehicle',emissionsByVehicleType);
+    PubSub.publish('Journeys:carbon-data-by-fuel',emissionsByFuelType);
+
+
   });
-  // PubSub.publish('Journeys:carbon-data-loaded', carbonData);
-  // PubSub.publish('Journeys:carbon-data-by-fuel', carnbonDataFuel);
 }
 
 // takes a total of all journeys and looks at the overall emissions
@@ -31,15 +39,28 @@ Calculator.prototype.calculateTotalEmissions = function(allJourneys){
 Calculator.prototype.calculateTotalDistance = function(allJourneys){
   let distanceTotal = 0;
   allJourneys.forEach ((journey )=> {
-    distanceTotal += journey.distance
+    distanceTotal += parseInt(journey.distance)
+    console.log(journey.distance);
   })
-  return distanceTotal;
-}
+  return distanceTotal
+  console.log(distanceTotal)
+}  
 
 // once form updated replace one with journey.numberOfJourneys;
 Calculator.prototype.calculateEmissions = function(journey) {
     return journey.distance  * this.getConversionFactor(journey);
   };
+
+
+  // Calculator.prototype.emissionsPerJourney = function(allJourneys){
+  //   allJourneys.forEach ((journey )=> {
+  //     console.log(journey)
+  //     emissionsTotal += this.calculateEmissions(journey);
+  //   })
+  //   return emissionsTotal;
+  // };
+
+
 
 // starts a function with a data of all journeys
 // for each journey if fuel type and vehicle type are right returns a conversion factor
@@ -110,11 +131,11 @@ Calculator.prototype.tenYearsDistanceProjection = function(allJourneys){
 Calculator.prototype.splitCalculationByFuel = function(allJourneys) {
   const emissionsByFuelType = {}
   for (const journey of allJourneys) {
-    if (emissionsByFuelType[journey.fuel]) {
-      emissionsByFuelType[journey.fuel] += this.calculateEmissions(journey);
+    if (emissionsByFuelType[journey.fuelType]) {
+      emissionsByFuelType[journey.fuelType] += this.calculateEmissions(journey);
     }
     else {
-      emissionsByFuelType[journey.fuel] = this.calculateEmissions(journey);
+      emissionsByFuelType[journey.fuelType] = this.calculateEmissions(journey);
     }
   }
   return emissionsByFuelType;
@@ -122,21 +143,20 @@ Calculator.prototype.splitCalculationByFuel = function(allJourneys) {
 
 Calculator.prototype.splitCalculationByModeOfTransport = function(allJourneys) {
   const emissionsByVehicleType = {};
-
   for (const journey of allJourneys) {
-    if (emissionsByVehicleType[journey.vehicle]) {
-      emissionsByVehicleType[journey.vehicle] += this.calculateEmissions(journey);
+    if (emissionsByVehicleType[journey.vehicleType]) {
+      emissionsByVehicleType[journey.vehicleType] += this.calculateEmissions(journey);
     }
     else {
-      emissionsByVehicleType[journey.vehicle] = this.calculateEmissions(journey);
+      emissionsByVehicleType[journey.vehicleType] = this.calculateEmissions(journey);
     }
   }
-  return emissionsByVehicleType;
+  return emissionsByVehicleType
+  console.log(emissionsByVehicleType)
 }
 
-Calculator.prototype.splitCalculationByUseType= function(allJourneys) {
+Calculator.prototype.splitCalculationByUseType = function(allJourneys) {
   const emissionsByUseType = {};
-
   for (const journey of allJourneys) {
     if (emissionsByUseType[journey.useType]) {
       emissionsByUseType[journey.useType] += this.calculateEmissions(journey);

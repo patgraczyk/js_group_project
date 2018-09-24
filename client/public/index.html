@@ -4,6 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js/bundle.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- <script type="text/javascript">
+      google.charts.load('current', {packages: ['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+    </script> -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Fugaz+One|Signika+Negative" rel="stylesheet">
     <title>Carbon Tracker</title>
@@ -25,9 +34,13 @@
         </div>
     </nav>
 
-    <section id="render-view">
-    
+    <section id="impact-view">
+        <p>Your Impact in Numbers</p>
     </section>
+    <div id="container" style="width:100%; height:400px;">
 
+    </div>
+
+    
 </body>
 </html>
