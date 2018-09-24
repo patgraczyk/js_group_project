@@ -13,6 +13,7 @@ JourneysAllView.prototype.bindEvents = function () {
 
 JourneysAllView.prototype.renderFormView = function(allJourneyData){
   const newList = document.createElement('ul');
+  newList.setAttribute('class', 'cards');
   allJourneyData.forEach(journey => {
     const distance = journey.distance;
     const vehicleType = journey.vehicleType;
@@ -25,7 +26,8 @@ JourneysAllView.prototype.renderFormView = function(allJourneyData){
 
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
   const newListElement = document.createElement('li');
-  newListElement.innerHTML = `Distance: ${distance} Vehicle Type: ${vehicleType} Fuel Type: ${fuelType}`
+  newListElement.setAttribute('class', 'card');
+  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
   return newListElement;
 }
 
