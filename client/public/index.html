@@ -29,17 +29,37 @@
     
         <h1>Add a journey</h1>
         <form id="add-journey-form">
-      
-            <label for="distance">Distance:</label>
-            <input type="text" name="distance"/><br/>
-      
-            <label for="location">Vehicle type:</label>
-            <input type="text" name="vehicleType"/><br/>
-        
-            <label for="fuel-type">Fuel type:</label>
-            <input type="text" name="fuelType"/><br/>
-          
 
+            <label for="vehicleType">Vehicle type:</label>
+            <select name="vehicleType">
+                <option value="car">Car</option>
+                <option value="airplane">Airplane</option>
+                <option value="motorbike">Motorbike</option>
+                <option value="train">Train</option>
+              </select> 
+
+            <label for="fuelType">Fuel type:</label>
+            <select name="fuelType">
+                <option value="petrol">Petrol</option>
+                <option value="diesel">Diesel</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="electric">Electric</option>
+              </select>
+
+              <label for="distance">Distance:</label>
+              <input type="text" name="distance"/>
+              
+              <p>Was this distance in miles or km?</p>
+              <label for="km">KM</label>
+              <input id="unit-km" type="radio" name="unit" value="KM" checked>
+              <label for="miles">Miles</label>
+              <input id="unit-miles" type="radio" name="unit" value="Miles">
+
+              <p>Was this journey optional?</p>
+              <label for="optional-yes">Yes</label>
+              <input id="optional" type="radio" name="optional" value="Yes" checked>
+              <label for="optional-no">No</label>
+              <input id="optional-no" type="radio" name="optional" value="No">
           <input type="submit" value="Save" id="save"/>
         </form>
 

@@ -2,7 +2,7 @@ const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const Journeys = function(){
-    this.request = new Request('/api/journeys')
+    this.request = new Request('http://localhost:3000/api/journeys')
     this.journeys = [];
     this.categories = [];
 }
@@ -42,7 +42,7 @@ Journeys.prototype.postJourney = function (newJourney) {
         PubSub.publish('Journeys:data-loaded', journeys);
       })
       .catch(console.error);
-  };
+};
 
 //  *GARY thisis a simple UPDATE request, edit as you wish
 // Journeys.prototype.update = function(editedJourney) {
