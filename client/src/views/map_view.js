@@ -1,7 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 
 const MapView = function(){
-    this.mapContainer = null;
+    this.mapContainer = document.querySelector('#render-view');
     this.coordinatesBikes = null;
     this.coordinatesCharge = null;
 }
@@ -44,7 +44,7 @@ MapView.prototype.renderMap = function(){
     renderElement.innerHTML = '';
     const viewContainer = document.createElement('div');
 
-	var mymap = L.map('viewContainer').setView([51.505, -0.09], 13);
+	var mymap = L.map('mapContainer').setView([51.505, -0.09], 13);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 20,
