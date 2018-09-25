@@ -87,3 +87,10 @@ nav {
     margin: 5px 0;
 }
 
+.chart {
+    height: 200px;
+}
+
+.spacer {
+    height: 20px;
+}
