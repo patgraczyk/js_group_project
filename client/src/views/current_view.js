@@ -16,14 +16,17 @@ CurrentView.prototype.bindEvents = function () {
     element.addEventListener('click', (event) => {
         console.log(`item clicked: ${event.target.id}`)
         this.defaultView = event.target.id;
-    }); 
-    this.render();
-  });
+    });
 
+  });
+  console.log(`default view is currently: ${this.defaultView}`)
+  this.render();
 };
 
 CurrentView.prototype.render = function(){
-    // const htmlElement = 
+    const htmlElement = document.querySelector('#render-view');
+    console.log(`default view is currently: ${this.defaultView}`)
+    htmlElement.innerHTML = ''
     switch(this.defaultView){
         case 1:
             journeysFormView.renderFormView();
