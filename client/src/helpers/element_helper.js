@@ -3,4 +3,6 @@ const elementHelper = function(tagName, attributes){ // This would be called lik
   for(const attrib in attributes) // not sure if const is okay
     element.setAttribute(attrib, attributes[attrib]);
   return element;
-}
+};
+
+module.exports = elementHelper;

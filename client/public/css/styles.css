@@ -102,6 +102,7 @@ nav {
 #render-view .card {
     
     display: inline-block;
+    text-align: center;
     vertical-align: top;
     margin: 0 auto;
     background-color: white;
@@ -111,9 +112,43 @@ nav {
     text-decoration: none;
     font-size: 20px;
     margin: 20px;
-    width: 260px;
+    width: 225px;
     border-radius: 25px;
     font-family: 'Signika Negative', sans-serif;
     box-shadow: 6px 6px 6px 0px rgba(0,0,0,0.14);
 }
 
+#render-view hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+#render-view .distanceLabel {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#render-view .distance {
+    font-size: 75px;
+    width: 50%;
+}
+
+#render-view .distanceResult {
+    font-size: 75;
+    word-spacing: -15px;
+}
+
+#render-view .vehicleLabel {
+    margin-top: 10px;
+    word-spacing: 50px;
+}
+
+#render-view .fuelLabel {
+    margin-top: 30px;
+    word-spacing: 50px;
+}
+
+#render-view .fuelLine {
+    margin-bottom: 30px;
+}
