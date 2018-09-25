@@ -35,7 +35,7 @@ JourneysAllView.prototype.renderFormView = function(allJourneyData){
     const listElement = this.createListElement(distance, vehicleType, fuelType);
     newList.appendChild(listElement)
   });
-  this.renderElement.appendChild(newList);
+  renderElement.appendChild(newList);
 }
 
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
