@@ -47,6 +47,7 @@ nav {
 
 .scrollmenu li {
     font-family: 'Signika Negative', sans-serif;
+    font-size: 20px;
     display: block;
     color: white;
     text-align: left;
@@ -87,6 +88,7 @@ nav {
     margin: 5px 0;
 }
 
+<<<<<<< HEAD
 .chart {
     height: 200px;
 }
@@ -94,3 +96,34 @@ nav {
 .spacer {
     height: 20px;
 }
+=======
+#render-view ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#render-view .cards {
+    margin: 0 auto;
+    text-align: center;
+}
+
+#render-view .card {
+    
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 auto;
+    background-color: white;
+    color: dimgray;
+    padding: 20px;
+    text-justify: newspaper;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 20px;
+    width: 260px;
+    border-radius: 25px;
+    font-family: 'Signika Negative', sans-serif;
+    box-shadow: 6px 6px 6px 0px rgba(0,0,0,0.14);
+}
+
+>>>>>>> develop
