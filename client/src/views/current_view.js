@@ -1,6 +1,7 @@
 const JourneysFormView = require('./journeys_form_view');
 const JourneysAllView = require('./journeys_all_view');
 const JourneysImpactView = require('./journeys_impact_view');
+const MapView = require('./map_view');
 
 const CurrentView = function(defaultView, navElement){
     this.defaultView = defaultView;
@@ -12,6 +13,8 @@ const journeysAllView = new JourneysAllView();
 journeysAllView.bindEvents();
 const journeysImpactView = new JourneysImpactView();
 journeysImpactView.bindEvents();
+const mapView = new MapView();
+mapView.bindEvents();
 
 
 
@@ -36,6 +39,9 @@ CurrentView.prototype.render = function(num){
         break;
         case 3:
             journeysAllView.renderFormView();
+        break;
+        case 4:
+            mapView.renderMap();
         break;
     }
 

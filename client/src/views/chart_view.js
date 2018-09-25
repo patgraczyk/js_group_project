@@ -181,14 +181,64 @@ ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
         }, {
           name: 'Ten years',
           data: [distanceTenYear]
-        },]
+        }]
       });
     
     }
 
+// PIE CHART SPLIT BY FUEL 
+ChartView.prototype.renderChart = function(carbonEmissions){
+    Highcharts.chart('container', {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {
+          text: 'Browser market shares in January, 2018'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          name: 'Fuel Type',
+          colorByPoint: true,
+          data: [{
+            name: 'Petrol',
+            y: 61.41,
+            sliced: true,
+            selected: true
+          }, {
+            name: 'Diesel',
+            y: 11.84
+          }, {
+            name: 'Hybrid',
+            y: 10.85
+          }, {
+            name: 'Electric',
+            y: 4.67
+          }]
+        }]
+      });
+    }
 
 
-// PIE CHART SPLIT - TO  USE FOR LEISURE / BUSINESS 
+
+// PIE CHART SPLIT - TO  USE FOR OPTIONAL - YES / NO
 ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
 Highcharts.chart('container', {
     chart: {

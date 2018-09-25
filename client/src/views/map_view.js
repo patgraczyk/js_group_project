@@ -1,8 +1,9 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const MapView = function(mapContainer){
-    this.mapContainer = mapContainer;
-    this.coordinates = null;
+const MapView = function(){
+    this.mapContainer = null;
+    this.coordinatesBikes = null;
+    this.coordinatesCharge = null;
 }
 
 MapView.prototype.bindEvents = function(){
@@ -17,17 +18,33 @@ MapView.prototype.bindEvents = function(){
     })
 }
 
+// FUNCTION TO GET ALL COORDINATES FOR BIKES AND CHARGE POINTS 
 MapView.prototype.getLocations = function(allBikes) {
-    arrayOfLocations=[]
-    console.log(arrayOfLocations)
+    arrayOfBikeLocations=[]
+    console.log(arrayOfBikeLocations)
     allBikes.forEach(bike => {
-        arrayOfLocations.push([bike.lat, bike.lon])
+        arrayOfBikeLocations.push([bike.lat, bike.lon])
     })
-    return this.coordinates = arrayOfLocations;
+    return this.coordinatesBikes = arrayOfBikeLocations;
 }
 
+MapView.prototype.getLocations = function(allChargePoints) {
+    arrayOfChargeLocations=[]
+    console.log(arrayOfChargeLocations)
+    allChargePoints.forEach(chargePoint => {
+        arrayOfChargeLocations.push([chargePoint.lat, chargePoint.lon])
+    })
+    return this.coordinatesCharge = arrayOfChargeLocations;
+}
+
+
+
 MapView.prototype.renderMap = function(){
-	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+    const renderElement = document.querySelector('#render-view')
+    renderElement.innerHTML = '';
+    const viewContainer = document.createElement('div');
+
+	var mymap = L.map('viewContainer').setView([51.505, -0.09], 13);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 20,

@@ -12,8 +12,8 @@ document.addEventListener ('DOMContentLoaded', () => {
   
   console.log('js loaded')
 
-  const chartContainer = document.querySelector('#container');
-  const resultChart = new ChartView(chartContainer);
+  // const chartContainer = document.querySelector();
+  const resultChart = new ChartView();
   resultChart.bindEvents();
   
   // const mapContainer = document.querySelector('#mapid');
