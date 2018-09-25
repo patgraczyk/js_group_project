@@ -2,7 +2,8 @@ const Calculator = require('./models/Calculator');
 const Journeys = require('./models/journeys');
 const JourneysImpactView = require('./views/journeys_impact_view');
 const ChartView = require('./views/chart_view');
-const CurrentView = require('./views/current_view')
+const CurrentView = require('./views/current_view');
+const MapView = require('./views/map_view');
 
 document.addEventListener ('DOMContentLoaded', () => {
   
@@ -15,6 +16,10 @@ document.addEventListener ('DOMContentLoaded', () => {
   // const allImpactDisplay = document.querySelector('#impact-view')
   // const journeysImpactView = new JourneysImpactView(allImpactDisplay);
   // journeysImpactView.bindEvents();
+
+  // const mapContainer = document.querySelector('#mapid');
+  // const mapView = new MapView(mapContainer);
+  // mapView.bindEvents();
 
   const journeys = new Journeys();
   journeys.bindEvents();
