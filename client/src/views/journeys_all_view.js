@@ -24,8 +24,6 @@ JourneysAllView.prototype.renderFormView = function(){
  
 };
 
-<<<<<<< HEAD
-=======
 JourneysAllView.prototype.renderFormView = function(allJourneyData){
   const newList = document.createElement('ul');
   newList.setAttribute('class', 'cards');
@@ -39,13 +37,12 @@ JourneysAllView.prototype.renderFormView = function(allJourneyData){
   this.renderElement.appendChild(newList);
 }
 
->>>>>>> develop
-JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
-  const newListElement = document.createElement('li');
-  newListElement.setAttribute('class', 'card');
-  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
-  return newListElement;
-}
+// JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
+//   const newListElement = document.createElement('li');
+//   newListElement.setAttribute('class', 'card');
+//   newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
+//   return newListElement;
+// }
 
 JourneysAllView.prototype.handleSubmit = function (event) {
   event.preventDefault();
