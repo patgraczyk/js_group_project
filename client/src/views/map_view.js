@@ -2,18 +2,32 @@ const PubSub = require('../helpers/pub_sub.js');
 
 const MapView = function(mapContainer){
     this.mapContainer = mapContainer;
+    this.coordinates = null;
 }
 
 MapView.prototype.bindEvents = function(){
     PubSub.subscribe('Bike:bikes-loaded', (event) => {
-        // const theNumber =  event.detail; 
-        // this.renderChart(event.detail)
+        // const allBikes =  event.detail; 
+        this.getLocations(event.detail)
         this.renderMap()
 })
+    PubSub.subscribe('Chargers:data-loaded', (event) => {
+        const allChargePoints = event.detail
+        console.log(event.detail)
+    })
+}
+
+MapView.prototype.getLocations = function(allBikes) {
+    arrayOfLocations=[]
+    console.log(arrayOfLocations)
+    allBikes.forEach(bike => {
+        arrayOfLocations.push([bike.lat, bike.lon])
+    })
+    return this.coordinates = arrayOfLocations;
 }
 
 MapView.prototype.renderMap = function(){
-	var mymap = L.map('mapid').setView([55.95, -3.1883], 1);
+	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 20,
@@ -28,20 +42,6 @@ MapView.prototype.renderMap = function(){
     	.bindPopup("<b>Second Choice</b><br />LONDON").openPopup();
 		L.marker([51.521283, -0.084605]).addTo(mymap)
     	.bindPopup("<b>YOU GOT</b><br />LONDON").openPopup();
-
-
-	L.circle([51.508, -0.11], 500, {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5
-	}).addTo(mymap).bindPopup("I am a circle.");
-
-	L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-	]).addTo(mymap).bindPopup("I am a polygon.");
-
 
 	var popup = L.popup();
 
