@@ -24,9 +24,26 @@ JourneysAllView.prototype.renderFormView = function(){
  
 };
 
+<<<<<<< HEAD
+=======
+JourneysAllView.prototype.renderFormView = function(allJourneyData){
+  const newList = document.createElement('ul');
+  newList.setAttribute('class', 'cards');
+  allJourneyData.forEach(journey => {
+    const distance = journey.distance;
+    const vehicleType = journey.vehicleType;
+    const fuelType = journey.fuelType;
+    const listElement = this.createListElement(distance, vehicleType, fuelType);
+    newList.appendChild(listElement)
+  });
+  this.renderElement.appendChild(newList);
+}
+
+>>>>>>> develop
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
   const newListElement = document.createElement('li');
-  newListElement.innerHTML = `Distance: ${distance} Vehicle Type: ${vehicleType} Fuel Type: ${fuelType}`
+  newListElement.setAttribute('class', 'card');
+  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
   return newListElement;
 }
 
