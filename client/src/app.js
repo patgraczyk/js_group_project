@@ -21,7 +21,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   journeys.getData();
 
   const navElement = document.querySelectorAll('li');
-  const currentView = new CurrentView(1, navElement);
+  const currentView = new CurrentView(2, navElement);
   currentView.render();
   currentView.bindEvents();
 

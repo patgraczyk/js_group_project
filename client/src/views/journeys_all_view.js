@@ -38,10 +38,11 @@ JourneysAllView.prototype.renderFormView = function(allJourneyData){
   this.renderElement.appendChild(newList);
 }
 
-JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
-  const newListElement = document.createElement('li');
-  newListElement.setAttribute('class', 'card');
-  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
+JourneysAllView.prototype.createListElement = function(distance){
+  const newListElement = document.createElement('li', {
+    'class': 'card'
+  })
+  newListElement.innerHTML = `distance: ${distance} cubic fucktonnes`;
   return newListElement;
 }
 

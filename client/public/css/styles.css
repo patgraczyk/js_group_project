@@ -88,15 +88,6 @@ nav {
     margin: 5px 0;
 }
 
-<<<<<<< HEAD
-.chart {
-    height: 200px;
-}
-
-.spacer {
-    height: 20px;
-}
-=======
 #render-view ul {
     list-style-type: none;
     margin-left: 0;
@@ -125,5 +116,3 @@ nav {
     font-family: 'Signika Negative', sans-serif;
     box-shadow: 6px 6px 6px 0px rgba(0,0,0,0.14);
 }
-
->>>>>>> develop
