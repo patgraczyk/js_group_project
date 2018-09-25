@@ -4,6 +4,7 @@ const JourneysImpactView = require('./views/journeys_impact_view');
 const ChartView = require('./views/chart_view');
 const CurrentView = require('./views/current_view');
 const MapView = require('./views/map_view');
+const Bikes = require('./models/bikes');
 
 document.addEventListener ('DOMContentLoaded', () => {
   
@@ -17,20 +18,23 @@ document.addEventListener ('DOMContentLoaded', () => {
   // const journeysImpactView = new JourneysImpactView(allImpactDisplay);
   // journeysImpactView.bindEvents();
 
-  // const mapContainer = document.querySelector('#mapid');
-  // const mapView = new MapView(mapContainer);
-  // mapView.bindEvents();
+  const mapContainer = document.querySelector('#mapid');
+  const mapView = new MapView(mapContainer);
+  mapView.bindEvents();
 
   const journeys = new Journeys();
   journeys.bindEvents();
   journeys.getData();
 
+  const bikes = new Bikes();
+  bikes.getData();
+
   const calclculator = new Calculator();
   calclculator.bindEvents();
 
-  const navElement = document.querySelectorAll('li');
-  const currentView = new CurrentView(2, navElement);
-  currentView.render();
+  // const navElement = document.querySelectorAll('li');
+  // const currentView = new CurrentView(2, navElement);
+  // currentView.render();
 
 
 }); 
