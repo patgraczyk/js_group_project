@@ -68,6 +68,11 @@ h1 {
     text-decoration: none;
 }
 
+.scrollmenu li:hover{
+    background-color: white;
+    color: black;
+}
+
 #add-journey {
     display: block;
     margin: 0 auto;
