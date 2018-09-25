@@ -8,13 +8,13 @@ document.addEventListener ('DOMContentLoaded', () => {
   
   console.log('js loaded')
 
-  const chartContainer = document.querySelector('#container');
-  const resultChart = new ChartView(chartContainer);
-  resultChart.bindEvents();
+  // const chartContainer = document.querySelector('#container');
+  // const resultChart = new ChartView(chartContainer);
+  // resultChart.bindEvents();
   
-  const allImpactDisplay = document.querySelector('#impact-view')
-  const journeysImpactView = new JourneysImpactView(allImpactDisplay);
-  journeysImpactView.bindEvents();
+  // const allImpactDisplay = document.querySelector('#impact-view')
+  // const journeysImpactView = new JourneysImpactView(allImpactDisplay);
+  // journeysImpactView.bindEvents();
 
   const journeys = new Journeys();
   journeys.bindEvents();
