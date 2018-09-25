@@ -11,8 +11,12 @@ Calculator.prototype.bindEvents = function (){
 
     const carbonData = this.calculateTotalEmissions(evt.detail);
     const carbonDataDistance = this.calculateTotalDistance(evt.detail);
+
     const carbonDataProjections = this.yearlyEmissionProjection(evt.detail);
     const carbonDataProjectionsTen = this.tenYearsEmissionProjection(evt.detail);
+
+    const distanceDataProjections = this.yearlyDistanceProjection(evt.detail);
+    const distanceDataProjectionsTen = this.tenYearsDistanceProjection(evt.detail);
 
     const emissionsByVehicleType = this.splitCalculationByModeOfTransport(evt.detail);
     const emissionsByFuelType = this.splitCalculationByFuel(evt.detail);
@@ -21,8 +25,12 @@ Calculator.prototype.bindEvents = function (){
 
     PubSub.publish('Journeys:carbon-data-loaded', carbonData);
     PubSub.publish('Journeys:carbon-data-distance', carbonDataDistance);
+
     PubSub.publish('Journeys:carbon-data-projections', carbonDataProjections);
-    PubSub.publish('Journeys:carbon-data-projections', carbonDataProjectionsTen);
+    PubSub.publish('Journeys:carbon-data-projectionsTen', carbonDataProjectionsTen);
+    PubSub.publish('Journeys:distance-data-projections', distanceDataProjections);
+    PubSub.publish('Journeys:distance-data-projectionsTen', distanceDataProjectionsTen);
+
     PubSub.publish('Journeys:carbon-data-by-vehicle',emissionsByVehicleType);
     PubSub.publish('Journeys:carbon-data-by-fuel',emissionsByFuelType);
     PubSub.publish('Journeys:carbon-data-by-option',emissionsByOption);

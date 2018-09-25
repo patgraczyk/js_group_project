@@ -16,8 +16,14 @@ ChartView.prototype.bindEvents = function(){
     PubSub.subscribe('Journeys:carbon-data-projections', (event) => {
     this.projectionYear =  event.detail; 
   }) 
-    PubSub.subscribe('Journeys:carbon-data-projections', (event) => {
-    this.projectionYear =  event.detail; 
+    PubSub.subscribe('Journeys:carbon-data-projectionsTen', (event) => {
+    this.projectionTenYear =  event.detail; 
+  }) 
+  PubSub.subscribe('Journeys:distance-data-projections', (event) => {
+    this.distanceYear =  event.detail; 
+  }) 
+    PubSub.subscribe('Journeys:distance-data-projectionsTen', (event) => {
+    this.distanceTenYear =  event.detail; 
   }) 
 }
 
@@ -48,7 +54,7 @@ ChartView.prototype.renderChart = function(carbonEmissions){
 };
 
 // PROJECTIONS CHART EMISSIONS
-ChartView.prototype.renderChart = function(projectionEmissions){
+ChartView.prototype.renderChart = function(projectionYear, projectionTenYear){
 Highcharts.chart('container', {
     chart: {
       type: 'bar'
@@ -101,14 +107,82 @@ Highcharts.chart('container', {
     },
     series: [{
       name: 'One year',
-      data: [projectionEmissions]
+      data: [projectionYear]
     }, {
       name: 'Ten years',
-      data: []
+      data: [projectionTenYear]
     },]
   });
 
 }
+
+
+// PROJECTIONS CHART DISTANCE
+ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
+    Highcharts.chart('container', {
+        chart: {
+          type: 'bar'
+        },
+        title: {
+          text: 'Emissions Projections'
+        },
+        subtitle: {
+          text: 'See how your emissions will look over 1 and 10 years'
+        },
+        xAxis: {
+          categories: ['1 year ', '10 years'],
+          title: {
+            text: null
+          }
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: 'Tonnes CO2e',
+            align: 'high'
+          },
+          labels: {
+            overflow: 'justify'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' tonnes CO2e'
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              enabled: true
+            }
+          }
+        },
+        legend: {
+          layout: 'vertical',
+          align: 'right',
+          verticalAlign: 'top',
+          x: -40,
+          y: 80,
+          floating: true,
+          borderWidth: 1,
+          backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+          shadow: true
+        },
+        credits: {
+          enabled: false
+        },
+        series: [{
+          name: 'One year',
+          data: [distanceYear]
+        }, {
+          name: 'Ten years',
+          data: [distanceTenYear]
+        },]
+      });
+    
+    }
+
+
+
+// PIE CHART SPLIT 
 
 
 module.exports = ChartView;
