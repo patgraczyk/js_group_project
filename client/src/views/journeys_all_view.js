@@ -17,6 +17,8 @@ JourneysAllView.prototype.renderFormView = function(){
    
   const renderElement = document.querySelector('#render-view')
   renderElement.innerHTML = '';
+  const viewContainer = document.createElement('div');
+  viewContainer.id = "journey-all-view";
   const newList = document.createElement('ul');
   
   this.allJourneyData.forEach(journey => {
@@ -26,8 +28,9 @@ JourneysAllView.prototype.renderFormView = function(){
     const listElement = this.createListElement(distance, vehicleType, fuelType);
     newList.appendChild(listElement)
   })
-  renderElement.appendChild(newList)
-
+  viewContainer.appendChild(newList);
+  renderElement.appendChild(viewContainer);
+  
   console.log(`Journeys all view rendered: ${newList}`)
 
 };

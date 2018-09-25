@@ -11,6 +11,8 @@ JourneysFormView.prototype.renderFormView = function(){
 
   const renderElement = document.querySelector('#render-view');
   renderElement.innerHTML = '';
+  const viewContainer = document.createElement('div');
+  viewContainer.id = "journeys-form-view";
   const header = document.createElement('h1');
   header.innerHTML = "Add a Journey";
   
@@ -148,8 +150,9 @@ JourneysFormView.prototype.renderFormView = function(){
   form.appendChild(noInput);
   form.appendChild(submitButton);
 
-  renderElement.appendChild(header);
-  renderElement.appendChild(form);
+  viewContainer.appendChild(header);
+  viewContainer.appendChild(form);
+  renderElement.appendChild(viewContainer);
 
   form.addEventListener('submit', (event) => {
     this.handleSubmit(event);

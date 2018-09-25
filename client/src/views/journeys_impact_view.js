@@ -3,6 +3,7 @@ const elementHelper = require ('../helpers/element_helper.js');
 
 const JourneysImpactView = function(){
   this.container = null;
+  this.viewDiv = null;
   this.theNumber = null;
   this.theDistance = null;
   this.projection = null;
@@ -48,6 +49,7 @@ JourneysImpactView.prototype.render = function(mainNumber) {
 
   this.container = document.querySelector('#render-view')
   this.container.innerHTML = '';
+ 
   
   const numberInfo = document.createElement('p');
   numberInfo.textContent = `The overall emissions of your journey ${mainNumber} tonnesCO2e`;
