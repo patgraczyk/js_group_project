@@ -22,21 +22,8 @@ JourneysAllView.prototype.renderFormView = function(){
     })
     renderElement.appendChild(newList)
   })
- 
+  
 };
-
-JourneysAllView.prototype.renderFormView = function(allJourneyData){
-  const newList = document.createElement('ul');
-  newList.setAttribute('class', 'cards');
-  allJourneyData.forEach(journey => {
-    const distance = journey.distance;
-    const vehicleType = journey.vehicleType;
-    const fuelType = journey.fuelType;
-    const listElement = this.createListElement(distance, vehicleType, fuelType);
-    newList.appendChild(listElement)
-  });
-  this.renderElement.appendChild(newList);
-}
 
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
   const newListElement = document.createElement('li');
