@@ -25,6 +25,12 @@ ChartView.prototype.bindEvents = function(){
     PubSub.subscribe('Journeys:distance-data-projectionsTen', (event) => {
     this.distanceTenYear =  event.detail; 
   }) 
+  PubSub.subscribe('Journeys:carbon-data-by-vehicle', (event) => {
+    this.splitVehicle =  event.detail; 
+  })
+  PubSub.subscribe('Journeys:carbon-data-by-fuel', (event) => {
+    this.splitFuel =  event.detail; 
+  })
 }
 
 
@@ -182,7 +188,61 @@ ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
 
 
 
-// PIE CHART SPLIT 
+// PIE CHART SPLIT - TO  USE FOR LEISURE / BUSINESS 
+ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
+Highcharts.chart('container', {
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: 0,
+      plotShadow: false
+    },
+    title: {
+      text: 'Browser<br>shares<br>2017',
+      align: 'center',
+      verticalAlign: 'middle',
+      y: 40
+    },
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+      pie: {
+        dataLabels: {
+          enabled: true,
+          distance: -50,
+          style: {
+            fontWeight: 'bold',
+            color: 'white'
+          }
+        },
+        startAngle: -90,
+        endAngle: 90,
+        center: ['50%', '75%'],
+        size: '110%'
+      }
+    },
+    series: [{
+      type: 'pie',
+      name: 'Browser share',
+      innerSize: '50%',
+      data: [
+        ['Yes', 76],
+        ['No', 24],
+        {
+          name: 'Other',
+          y: 7.61,
+          dataLabels: {
+            enabled: false
+          }
+        }
+      ]
+    }]
+  });
+}  
+  
+
+
+
 
 
 module.exports = ChartView;
