@@ -9,29 +9,25 @@ const JourneysImpactView = function(){
   this.projection = null;
   this.splitVehicle = null;
   this.splitFuel = null;
+  this.chart =null;
 }
 
 JourneysImpactView.prototype.bindEvents = function(){
   
   PubSub.subscribe('Journeys:carbon-data-loaded', (event) => {
    this.theNumber =  event.detail; 
-   console.log(event.detail)
   }) 
   PubSub.subscribe('Journeys:carbon-data-distance', (event) => {
     this.theDistance =  event.detail; 
-    console.log(event.detail)
    })
   PubSub.subscribe('Journeys:carbon-data-projections', (event) => {
     this.projection =  event.detail; 
-    console.log(event.detail)
   })  
   PubSub.subscribe('Journeys:carbon-data-by-vehicle', (event) => {
     this.splitVehicle =  event.detail; 
-    // console.log(event.detail)
   })
   PubSub.subscribe('Journeys:carbon-data-by-fuel', (event) => {
     this.splitFuel =  event.detail; 
-    // console.log(event.detail)
   })
 }
 
@@ -41,24 +37,25 @@ JourneysImpactView.prototype.renderAll = function () {
   this.renderProjections(this.projection);
   this.renderFilter(this.splitVehicle);
   this.renderFilterFuel(this.splitFuel);
+  
 };
-
-
 
 JourneysImpactView.prototype.render = function(mainNumber) {
 
   this.container = document.querySelector('#render-view')
   this.container.innerHTML = '';
- 
   
+  const header = document.createElement('h1')
+  header.textContent ='Your impact summary'
+  this.container.appendChild(header);
   const numberInfo = document.createElement('p');
-  numberInfo.textContent = `The overall emissions of your journey ${mainNumber} tonnesCO2e`;
+  numberInfo.textContent = `Total emissions of your journeys: ${mainNumber} tonnesCO2e`;
   this.container.appendChild(numberInfo);
 }
 
 JourneysImpactView.prototype.renderDistance = function(mainNumber) {
   const numberInfo = document.createElement('p');
-  numberInfo.textContent = `Your overall travel ${mainNumber} km`;
+  numberInfo.textContent = `Total distance travelled: ${mainNumber} km`;
   this.container.appendChild(numberInfo);
 }
 

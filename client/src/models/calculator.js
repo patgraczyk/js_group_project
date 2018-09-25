@@ -12,15 +12,20 @@ Calculator.prototype.bindEvents = function (){
     const carbonData = this.calculateTotalEmissions(evt.detail);
     const carbonDataDistance = this.calculateTotalDistance(evt.detail);
     const carbonDataProjections = this.yearlyEmissionProjection(evt.detail);
+    const carbonDataProjectionsTen = this.tenYearsEmissionProjection(evt.detail);
+
     const emissionsByVehicleType = this.splitCalculationByModeOfTransport(evt.detail);
     const emissionsByFuelType = this.splitCalculationByFuel(evt.detail);
+    const emissionsByOption = this.splitCalculationByOption(evt.detail);
 
 
     PubSub.publish('Journeys:carbon-data-loaded', carbonData);
     PubSub.publish('Journeys:carbon-data-distance', carbonDataDistance);
     PubSub.publish('Journeys:carbon-data-projections', carbonDataProjections);
+    PubSub.publish('Journeys:carbon-data-projections', carbonDataProjectionsTen);
     PubSub.publish('Journeys:carbon-data-by-vehicle',emissionsByVehicleType);
     PubSub.publish('Journeys:carbon-data-by-fuel',emissionsByFuelType);
+    PubSub.publish('Journeys:carbon-data-by-option',emissionsByOption);
 
 
   });
@@ -120,7 +125,7 @@ Calculator.prototype.yearlyDistanceProjection = function(allJourneys){
 }
 
 Calculator.prototype.tenYearsEmissionProjection = function(allJourneys){
-  return this.yearlyProjection(allJourneys) * 10;
+  return this.yearlyEmissionProjection(allJourneys) * 10;
 }
 
 Calculator.prototype.tenYearsDistanceProjection = function(allJourneys){
@@ -155,7 +160,7 @@ Calculator.prototype.splitCalculationByModeOfTransport = function(allJourneys) {
   console.log(emissionsByVehicleType)
 }
 
-Calculator.prototype.splitCalculationByUseType = function(allJourneys) {
+Calculator.prototype.splitCalculationByOption = function(allJourneys) {
   const emissionsByUseType = {};
   for (const journey of allJourneys) {
     if (emissionsByUseType[journey.useType]) {
