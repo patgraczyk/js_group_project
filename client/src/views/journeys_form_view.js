@@ -1,23 +1,16 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const JourneysFormView = function(renderElement){
-    this.renderElement = renderElement;
+const JourneysFormView = function(){
+ 
 };
 
 // subscribes to 'Form-view:all-data-loaded'
 // publish to 'Form-view:journey-submitted'
 
-JourneysFormView.prototype.bindEvents = function () {
-  // this.form.addEventListener('submit', (event) => {
-  //   this.handleSubmit(event);
-  //   console.log(`event submitted: ${event}`)
-  // });
-
-  this.renderFormView();
-};
-
 JourneysFormView.prototype.renderFormView = function(){
-  
+
+  const renderElement = document.querySelector('#render-view');
+  renderElement.innerHTML = '';
   const header = document.createElement('h1');
   header.innerHTML = "Add a Journey";
   
@@ -155,9 +148,12 @@ JourneysFormView.prototype.renderFormView = function(){
   form.appendChild(noInput);
   form.appendChild(submitButton);
 
-  this.renderElement.appendChild(header);
-  this.renderElement.appendChild(form);
+  renderElement.appendChild(header);
+  renderElement.appendChild(form);
 
+  form.addEventListener('submit', (event) => {
+    this.handleSubmit(event);
+  });
 
 }
 
