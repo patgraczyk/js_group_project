@@ -9,32 +9,33 @@ const CurrentView = function(defaultView, navElement){
 
 const journeysFormView = new JourneysFormView();
 const journeysAllView = new JourneysAllView();
+journeysAllView.bindEvents();
 const journeysImpactView = new JourneysImpactView();
+journeysImpactView.bindEvents();
+
 
 
 CurrentView.prototype.bindEvents = function () {
-  this.navElement.forEach(element => {
-    element.addEventListener('click', (event) => {
+    this.render(1);
+    this.navElement.forEach(element => {
+        element.addEventListener('click', (event) => {
         console.log(`item clicked: ${event.target.id}`)
-        this.defaultView = event.target.id;
+        this.render(event.target.id);
     });
-
   });
-  console.log(`default view is currently: ${this.defaultView}`)
-  this.render();
 };
 
-CurrentView.prototype.render = function(){
+CurrentView.prototype.render = function(num){
     console.log(`default view is currently: ${this.defaultView}`)
-    switch(this.defaultView){
+    switch(parseInt(num)){
         case 1:
             journeysFormView.renderFormView();
         break;
         case 2:
-            journeysAllView.renderFormView();
+            journeysImpactView.renderAll();
         break;
         case 3:
-            journeysImpactView.renderFormView();
+            journeysAllView.renderFormView();
         break;
     }
 

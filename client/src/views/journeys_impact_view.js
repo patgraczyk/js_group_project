@@ -3,39 +3,52 @@ const elementHelper = require ('../helpers/element_helper.js');
 
 const JourneysImpactView = function(){
   this.container = null;
+  this.theNumber = null;
+  this.theDistance = null;
+  this.projection = null;
+  this.splitVehicle = null;
+  this.splitFuel = null;
 }
 
-JourneysImpactView.prototype.renderFormView = function(){
-  this.container = document.querySelector('#render-view')
-
+JourneysImpactView.prototype.bindEvents = function(){
+  
   PubSub.subscribe('Journeys:carbon-data-loaded', (event) => {
-   const theNumber =  event.detail; 
-   this.render(theNumber);
+   this.theNumber =  event.detail; 
    console.log(event.detail)
   }) 
   PubSub.subscribe('Journeys:carbon-data-distance', (event) => {
-    const theDistance =  event.detail; 
-    this.renderDistance(theDistance);
+    this.theDistance =  event.detail; 
     console.log(event.detail)
    })
   PubSub.subscribe('Journeys:carbon-data-projections', (event) => {
-    const projection =  event.detail; 
-    this.renderProjections(projection);
+    this.projection =  event.detail; 
     console.log(event.detail)
   })  
   PubSub.subscribe('Journeys:carbon-data-by-vehicle', (event) => {
-    const splitVehicle =  event.detail; 
-    this.renderFilter(splitVehicle);
+    this.splitVehicle =  event.detail; 
     // console.log(event.detail)
   })
   PubSub.subscribe('Journeys:carbon-data-by-fuel', (event) => {
-    const splitFuel =  event.detail; 
-    this.renderFilterFuel(splitFuel);
+    this.splitFuel =  event.detail; 
     // console.log(event.detail)
   })
 }
 
+JourneysImpactView.prototype.renderAll = function () {  
+  this.render(this.theNumber);
+  this.renderDistance(this.theDistance);
+  this.renderProjections(this.projection);
+  this.renderFilter(this.splitVehicle);
+  this.renderFilterFuel(this.splitFuel);
+};
+
+
+
 JourneysImpactView.prototype.render = function(mainNumber) {
+
+  this.container = document.querySelector('#render-view')
+  this.container.innerHTML = '';
+  
   const numberInfo = document.createElement('p');
   numberInfo.textContent = `The overall emissions of your journey ${mainNumber} tonnesCO2e`;
   this.container.appendChild(numberInfo);

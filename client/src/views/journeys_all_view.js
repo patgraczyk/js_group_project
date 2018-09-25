@@ -5,24 +5,31 @@ const JourneysAllView = function() {
   this.allJourneyData = null;
 }
 
-JourneysAllView.prototype.renderFormView = function(){
+JourneysAllView.prototype.bindEvents = function(){
   PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
-    
-    console.log(`journeys all view received data: ${allJourneyData}`)
+    console.log(`Journey all view received \n\n ${allJourneyData} \n\n from Journeys:data-loaded`)
     this.allJourneyData = allJourneyData.detail;
-    const renderElement = document.querySelector('#render-view')
-    const newList = document.createElement('ul');
+  });
     
-    this.allJourneyData.forEach(journey => {
-      const distance = journey.distance;
-      const vehicleType = journey.vehicleType;
-      const fuelType = journey.fuelType;
-      const listElement = this.createListElement(distance, vehicleType, fuelType);
-      newList.appendChild(listElement)
-    })
-    renderElement.appendChild(newList)
-  })
+};
+
+JourneysAllView.prototype.renderFormView = function(){
+   
+  const renderElement = document.querySelector('#render-view')
+  renderElement.innerHTML = '';
+  const newList = document.createElement('ul');
   
+  this.allJourneyData.forEach(journey => {
+    const distance = journey.distance;
+    const vehicleType = journey.vehicleType;
+    const fuelType = journey.fuelType;
+    const listElement = this.createListElement(distance, vehicleType, fuelType);
+    newList.appendChild(listElement)
+  })
+  renderElement.appendChild(newList)
+
+  console.log(`Journeys all view rendered: ${newList}`)
+
 };
 
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
