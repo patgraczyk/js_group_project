@@ -1,10 +1,13 @@
 const PubSub = require('../helpers/pub_sub.js');
+const elementHelper = require ('../helpers/element_helper.js');
 
-const JourneysImpactView = function(container){
-this.container = container;
+const JourneysImpactView = function(){
+  this.container = null;
 }
 
-JourneysImpactView.prototype.bindEvents = function(){
+JourneysImpactView.prototype.renderFormView = function(){
+  this.container = document.querySelector('#render-view')
+
   PubSub.subscribe('Journeys:carbon-data-loaded', (event) => {
    const theNumber =  event.detail; 
    this.render(theNumber);

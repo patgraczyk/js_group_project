@@ -9,6 +9,7 @@ const CurrentView = function(defaultView, navElement){
 
 const journeysFormView = new JourneysFormView();
 const journeysAllView = new JourneysAllView();
+const journeysImpactView = new JourneysImpactView();
 
 
 CurrentView.prototype.bindEvents = function () {
@@ -24,15 +25,16 @@ CurrentView.prototype.bindEvents = function () {
 };
 
 CurrentView.prototype.render = function(){
-    const htmlElement = document.querySelector('#render-view');
     console.log(`default view is currently: ${this.defaultView}`)
-    // htmlElement.innerHTML = ''
     switch(this.defaultView){
         case 1:
             journeysFormView.renderFormView();
         break;
         case 2:
             journeysAllView.renderFormView();
+        break;
+        case 3:
+            journeysImpactView.renderFormView();
         break;
     }
 

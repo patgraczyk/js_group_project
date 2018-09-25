@@ -12,7 +12,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   // const resultChart = new ChartView(chartContainer);
   // resultChart.bindEvents();
   
-  // const allImpactDisplay = document.querySelector('#impact-view')
+  // const allImpactDisplay = document.querySelector('#render-view')
   // const journeysImpactView = new JourneysImpactView(allImpactDisplay);
   // journeysImpactView.bindEvents();
 
@@ -24,7 +24,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   calclculator.bindEvents();
 
   const navElement = document.querySelectorAll('li');
-  const currentView = new CurrentView(2, navElement);
+  const currentView = new CurrentView(3, navElement);
   currentView.render();
 
 
