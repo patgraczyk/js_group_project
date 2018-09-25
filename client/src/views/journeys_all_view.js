@@ -25,23 +25,49 @@ JourneysAllView.prototype.renderFormView = function(){
   
 };
 
-JourneysAllView.prototype.renderFormView = function(allJourneyData){
-  const newList = document.createElement('ul');
-  newList.setAttribute('class', 'cards');
-  allJourneyData.forEach(journey => {
-    const distance = journey.distance;
-    const vehicleType = journey.vehicleType;
-    const fuelType = journey.fuelType;
-    const listElement = this.createListElement(distance, vehicleType, fuelType);
-    newList.appendChild(listElement)
-  });
-  renderElement.appendChild(newList);
-}
-
 JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
-  const newListElement = document.createElement('li');
-  newListElement.setAttribute('class', 'card');
-  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
+  const newListElement = elementHelper('li', {
+    'class': 'card'
+  });
+  const distanceText = elementHelper('p', {
+    'class': 'distanceLabel'
+  });
+  const headerLine = elementHelper('hr',{
+    'class': 'cardHeading'
+  });
+  const distanceResult = elementHelper('p', {
+    'class': 'distanceResult'
+  });
+  const vehicleLabel = elementHelper('p', {
+    'class': 'vehicleLabel'
+  });
+
+  const vehicleLine = elementHelper('hr', {
+    'class': 'vehicleLine'
+  });
+
+  const fuelLabel = elementHelper('p', {
+    'class': 'fuelLabel'
+  });
+
+  const fuelLine = elementHelper('hr', {
+    'class': 'fuelLine'
+  });
+
+  distanceText.innerHTML = 'Distance'
+  distanceResult.innerHTML = `${distance} <span style = "font-size: 16px;">miles</span>`
+
+  vehicleLabel.innerHTML = `Vehicle ${vehicleType}`
+
+  fuelLabel.innerHTML = `Fuel ${fuelType}`
+
+  newListElement.appendChild(distanceText);
+  newListElement.appendChild(headerLine);
+  newListElement.appendChild(distanceResult);
+  newListElement.appendChild(vehicleLabel);
+  newListElement.appendChild(vehicleLine);
+  newListElement.appendChild(fuelLabel);
+  newListElement.appendChild(fuelLine);
   return newListElement;
 }
 
