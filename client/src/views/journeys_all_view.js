@@ -11,6 +11,13 @@ JourneysAllView.prototype.bindEvents = function () {
   });
 };
 
+const elementHelper = function(tagName, attributes){ // This would be called like this: const newListElement = elementHelper('li', {'class': 'card'});
+  const element = document.createElement(tagName);
+  for(const attrib in attributes) // not sure if const okay
+    element.setAttribute(attrib, attributes[attrib]);
+  return element;
+}
+
 JourneysAllView.prototype.renderFormView = function(allJourneyData){
   const newList = document.createElement('ul');
   newList.setAttribute('class', 'cards');
