@@ -26,7 +26,7 @@ CurrentView.prototype.bindEvents = function () {
 CurrentView.prototype.render = function(){
     const htmlElement = document.querySelector('#render-view');
     console.log(`default view is currently: ${this.defaultView}`)
-    htmlElement.innerHTML = ''
+    // htmlElement.innerHTML = ''
     switch(this.defaultView){
         case 1:
             journeysFormView.renderFormView();

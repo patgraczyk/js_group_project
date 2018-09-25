@@ -20,12 +20,12 @@ document.addEventListener ('DOMContentLoaded', () => {
   journeys.bindEvents();
   journeys.getData();
 
+  const calclculator = new Calculator();
+  calclculator.bindEvents();
+
   const navElement = document.querySelectorAll('li');
   const currentView = new CurrentView(2, navElement);
   currentView.render();
-  currentView.bindEvents();
 
-  const calclculator = new Calculator();
-  calclculator.bindEvents();
 
 }); 

@@ -22,7 +22,7 @@ JourneysAllView.prototype.renderFormView = function(){
     })
     renderElement.appendChild(newList)
   })
- 
+  
 };
 
 JourneysAllView.prototype.renderFormView = function(allJourneyData){
@@ -38,18 +38,16 @@ JourneysAllView.prototype.renderFormView = function(allJourneyData){
   this.renderElement.appendChild(newList);
 }
 
-JourneysAllView.prototype.createListElement = function(distance){
-  const newListElement = document.createElement('li', {
-    'class': 'card'
-  })
-  newListElement.innerHTML = `distance: ${distance} cubic fucktonnes`;
+JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
+  const newListElement = document.createElement('li');
+  newListElement.setAttribute('class', 'card');
+  newListElement.innerHTML = `Distance: ${distance} <br/> Vehicle Type: ${vehicleType} <br/> Fuel Type: ${fuelType}`
   return newListElement;
 }
 
 JourneysAllView.prototype.handleSubmit = function (event) {
   event.preventDefault();
   const main = document.querySelector('#add-journey');
-  
   const header = document.createElement('h3');
   header.innerHTML = "New header"
   main.appendChild(header);
