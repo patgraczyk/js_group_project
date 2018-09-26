@@ -207,8 +207,8 @@ h1 {
     grid-template-areas:
         "rs rs rs"
         "ec rd ."
-        ". . ."
-        ". . .";
+        "pc pd ."
+        "fp . .";
   
       
 }
@@ -223,4 +223,15 @@ h1 {
 
 #render-view #render_distance_chart {
     grid-area: rd;
+}
+#render-view #render_projections_chart {
+    grid-area: pc;
+}
+
+#render-view #render_projections_distance {
+    grid-area: pd;
+}
+
+#render-view #render_fuel_pie_chart {
+    grid-area: fp;
 }
