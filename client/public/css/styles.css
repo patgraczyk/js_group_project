@@ -6,6 +6,7 @@
 html, body{
     margin: 0;
     width: 100%;
+    overflow: auto;
 }
 body {
     background-color: white;
@@ -36,7 +37,7 @@ nav {
 
 #render-view {
     grid-area: c;
-    overflow: auto;
+
 }
 
 .logo-wrapper {
@@ -202,36 +203,54 @@ h1 {
 #render-view #all_charts_container {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     grid-template-areas:
-        "rs rs rs"
-        "ec rd ."
-        "pc pd ."
-        "fp . .";
+        "rs rs rs rs rs rs"
+        "ec ec ec rd rd rd"
+        "pc pc pc pd pd pd"
+        "fp fp oc oc vt vt "
+        " . . . . . .";
   
       
 }
 
 #render-view #render_emissions_chart{
     grid-area: ec;
+  
+  
 }
 
 #render-view #render_summary_container{
     grid-area: rs;
+
 }
 
 #render-view #render_distance_chart {
     grid-area: rd;
+
 }
 #render-view #render_projections_chart {
     grid-area: pc;
+ 
 }
 
 #render-view #render_projections_distance {
     grid-area: pd;
+
 }
 
 #render-view #render_fuel_pie_chart {
     grid-area: fp;
+    
+}
+
+#render-view #render_vehicle_type_chart {
+    grid-area: vt;
+    
+}
+
+#render-view #render_optional_chart {
+    grid-area: oc;
+    
 }

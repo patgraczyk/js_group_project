@@ -9,6 +9,7 @@ const ChartView = function(){
   this.projectionTenYear = null;
   this.distanceYear = null;
   this.distanceTenYear = null;
+  this.splitVehicle = null;
 }
 
 ChartView.prototype.bindEvents = function(){
@@ -50,6 +51,8 @@ ChartView.prototype.renderAllCharts = function(){
   this.renderProjectionsChart(this.projectionYear, this.projectionTenYear);
   this.renderProjectionsDistance(this.distanceYear, this.distanceTenYear);
   this.renderFuelPieChart();
+  this.renderVehicleTypeChart();
+  this.renderOptionalChart();
 
 };
 
@@ -252,7 +255,10 @@ ChartView.prototype.renderProjectionsDistance = function(distanceYear, distanceT
         }]
       });
     
-    }
+}
+
+
+
 
 // PIE CHART SPLIT BY FUEL 
 ChartView.prototype.renderFuelPieChart = function(){
@@ -305,76 +311,115 @@ ChartView.prototype.renderFuelPieChart = function(){
           }]
         }]
       });
-    }
+}
 
 
+// PIE CHART SPLIT - vehicle type
+ChartView.prototype.renderVehicleTypeChart = function(){
+  const renderVehicleTypeChart = document.createElement('div');
+  renderVehicleTypeChart.id = "render_vehicle_type_chart";
+  this.container.appendChild(renderVehicleTypeChart);
+    Highcharts.chart(renderVehicleTypeChart, {
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false,
+          type: 'pie'
+        },
+        title: {
+          text: 'Emissions by vehicle type'
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+              style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+              }
+            }
+          }
+        },
+        series: [{
+          name: 'Vehicle Type',
+          colorByPoint: true,
+          data: [{
+            name: 'Car',
+            y: 61.41,
+            sliced: true,
+            selected: true
+          }, {
+            name: 'Train',
+            y: 11.84
+          }, {
+            name: 'Airplane',
+            y: 10.85
+          }, {
+            name: 'Motorbike',
+            y: 4.67
+          }]
+        }]
+      });
+}
 
-// // PIE CHART SPLIT - TO  USE FOR OPTIONAL - YES / NO
-// ChartView.prototype.renderChart = function(distanceYear, distanceTenYear){
-// Highcharts.chart('container', {
-//     chart: {
-//       plotBackgroundColor: null,
-//       plotBorderWidth: 0,
-//       plotShadow: false
-//     },
-//     title: {
-//       text: 'Browser<br>shares<br>2017',
-//       align: 'center',
-//       verticalAlign: 'middle',
-//       y: 40
-//     },
-//     tooltip: {
-//       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-//     },
-//     plotOptions: {
-//       pie: {
-//         dataLabels: {
-//           enabled: true,
-//           distance: -50,
-//           style: {
-//             fontWeight: 'bold',
-//             color: 'white'
-//           }
-//         },
-//         startAngle: -90,
-//         endAngle: 90,
-//         center: ['50%', '75%'],
-//         size: '110%'
-//       }
-//     },
-//     series: [{
-//       type: 'pie',
-//       name: 'Browser share',
-//       innerSize: '50%',
-//       data: [
-//         ['Yes', 76],
-//         ['No', 24],
-//         {
-//           name: 'Other',
-//           y: 7.61,
-//           dataLabels: {
-//             enabled: false
-//           }
-//         }
-//       ]
-//     }]
-//   });
-// } 
-
-
-
-
-
-
-// JourneysImpactView.prototype.renderAll = function () {  
-//   this.render(this.theNumber);
-//   this.renderDistance(this.theDistance);
-//   this.renderProjections(this.projection);
-//   this.renderFilter(this.splitVehicle);
-//   this.renderFilterFuel(this.splitFuel);
+// GUAGE CHART - optional journeys
+ChartView.prototype.renderOptionalChart = function(){
+  const renderOptionalChart = document.createElement('div');
+  renderOptionalChart.id = "render_optional_chart";
+  this.container.appendChild(renderOptionalChart);
   
-// };
-
-
+  Highcharts.chart(renderOptionalChart, {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+    },
+    title: {
+        text: 'Optional<br>trips<br>2017',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 40
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '75%'],
+            size: '110%'
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Optional Data',
+        innerSize: '50%',
+        data: [
+            ['Yes', 70],
+            {
+                name: 'No',
+                y: 30,
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        ]
+    }]
+  });
+}
 
 module.exports = ChartView;
