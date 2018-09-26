@@ -61,7 +61,7 @@ Calculator.prototype.calculateTotalDistance = function(allJourneys){
 
 // once form updated replace one with journey.numberOfJourneys;
 Calculator.prototype.calculateEmissions = function(journey) {
-    return journey.distance  * this.getConversionFactor(journey);
+    return (journey.distance  * this.getConversionFactor(journey))/1000;
   };
 
 
