@@ -20,7 +20,7 @@ const chartView = new ChartView();
 chartView.bindEvents();
 
 CurrentView.prototype.bindEvents = function () {
-    this.render('nav_maps');
+    this.render('nav_add_journey');
     this.navElement.forEach(element => {
         element.addEventListener('click', (event) => {
         console.log(`item clicked: ${event.target.id}`)
