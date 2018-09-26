@@ -20,9 +20,6 @@ document.addEventListener ('DOMContentLoaded', () => {
   journeys.bindEvents();
   journeys.getData();
 
-  const bikes = new Bikes();
-  bikes.getData();
-
   const chargePoints = new ChargePoints();
   chargePoints.getData();
 
@@ -32,6 +29,10 @@ document.addEventListener ('DOMContentLoaded', () => {
   const navElement = document.querySelectorAll('li');
   const currentView = new CurrentView(1, navElement);
   currentView.bindEvents();
+
+  const bikes = new Bikes();
+  bikes.getData();
+
 
 
 }); 

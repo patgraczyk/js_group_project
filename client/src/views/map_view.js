@@ -9,6 +9,7 @@ const MapView = function(){
 }
 
 MapView.prototype.bindEvents = function(){
+    
     PubSub.subscribe('Bike:bikes-loaded', (event) => {
         this.allBikes = event.detail;
     })
@@ -40,6 +41,7 @@ MapView.prototype.bindEvents = function(){
 
 
 MapView.prototype.renderMap = function(){
+    this.bindEvents()
     const renderElement = document.querySelector('#render-view')
     renderElement.innerHTML = '';
     const mapContainer = document.createElement('div');
@@ -71,7 +73,7 @@ MapView.prototype.renderMap = function(){
     console.log(arrayOfBikes)
 
     for (var i=0; i < 5; i++); {
-        L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
+        // L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
     	
 	// var popup = L.popup();
     }
