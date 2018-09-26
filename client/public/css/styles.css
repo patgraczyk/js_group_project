@@ -13,6 +13,12 @@ body {
     margin: 0 auto;
 }
 
+h1 {
+    text-align: center;
+    margin: 60px auto;
+    font-size: 3em;
+}
+
 .container {
     height: 100%;
     display: grid;
@@ -30,6 +36,7 @@ nav {
 
 #render-view {
     grid-area: c;
+    overflow: auto;
 }
 
 .logo-wrapper {
@@ -178,4 +185,16 @@ h1 {
 
 #render-view .fuelLine {
     margin-bottom: 30px;
+}
+
+#render-view #map {
+    margin: 50px auto;
+    display: block;
+    width: 1600px; 
+    height: 700px;
+    box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.14);
+}
+
+#render-view #mapHeader {
+    text-align: center;
 }
