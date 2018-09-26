@@ -10,6 +10,7 @@ const ChartView = function(){
   this.distanceYear = null;
   this.distanceTenYear = null;
   this.splitVehicle = null;
+  this.splitFuel = null;
 }
 
 ChartView.prototype.bindEvents = function(){
@@ -54,17 +55,53 @@ ChartView.prototype.renderAllCharts = function(){
   this.renderVehicleTypeChart();
   this.renderOptionalChart();
 
+  this.renderSummary();
+  this.renderEmissionsByVehicle(this.splitVehicle);
+  this.renderFilterFuel(this.splitFuel);
+
 };
 
 ChartView.prototype.renderSummary = function(){
   this.summaryContainer = document.createElement('div');
   this.summaryContainer.id = 'render_summary_container';
   const paragraph = document.createElement('p');
-  paragraph.innerHTML = `Total emissions are: ${this.totalEmissions} <br/ >
-  Total distance is: ${this.totalDistance}`
+  paragraph.innerHTML = `Overall emissions are: ${this.totalEmissions} <br/ >
+  Total distance is: ${this.totalDistance}<br/ >`
   this.summaryContainer.appendChild(paragraph);
   this.container.appendChild(this.summaryContainer);
 };
+
+
+
+ChartView.prototype.renderEmissionsByVehicle = function(mainNumber) {
+  console.log(mainNumber)
+  const header = document.createElement('p');
+  this.summaryContainer.appendChild(header);
+  header.textContent="Emissions By Mode of transport"
+  for (var key in mainNumber){
+    if (mainNumber.hasOwnProperty(key)) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key}: ${mainNumber[key]}`;
+      this.summaryContainer.appendChild(listItem);
+    }
+  } 
+}
+
+ChartView.prototype.renderFilterFuel = function(mainNumber) {
+  console.log(mainNumber)
+  const header = document.createElement('p');
+  this.summaryContainer.appendChild(header);
+  header.textContent="Emissions By Fuel"
+  for (var key in mainNumber){
+    if (mainNumber.hasOwnProperty(key)) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key}: ${mainNumber[key]}`;
+      this.summaryContainer.appendChild(listItem);
+    }
+  } 
+}
+
+
 
 // MAIN NUMBER CHART
 ChartView.prototype.renderEmissionsChart = function(totalEmissions){

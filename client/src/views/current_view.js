@@ -37,7 +37,6 @@ CurrentView.prototype.render = function(view){
         break;
         case 'nav_co2_impact':
             chartView.renderAllCharts();
-            chartView.renderSummary();
         break;
         case 'nav_all_journeys':
             journeysAllView.renderFormView();
