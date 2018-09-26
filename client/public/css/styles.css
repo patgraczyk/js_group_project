@@ -121,7 +121,7 @@ nav {
 
 #render-view {
     overflow: auto;
-    padding: 30px;  
+    padding: 30px; 
 }
 
 #render-view ul {
@@ -203,6 +203,7 @@ nav {
 }
 
 #render-view #all_charts_container {
+    overflow: auto;
     height: 100%;
     display: grid;
     justify-items: center;
@@ -266,4 +267,5 @@ nav {
 
 #journeys-all-view {
     text-align: justify;
+    overflow: auto;
 }
