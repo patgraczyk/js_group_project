@@ -13,8 +13,14 @@ const journeysAllView = new JourneysAllView();
 journeysAllView.bindEvents();
 const journeysImpactView = new JourneysImpactView();
 journeysImpactView.bindEvents();
+
+// const mapContainer = document.querySelector('#mapid');
 const mapView = new MapView();
 mapView.bindEvents();
+
+
+// const mapView = new MapView();
+// mapView.bindEvents();
 
 
 
