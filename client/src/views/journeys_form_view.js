@@ -167,13 +167,15 @@ JourneysFormView.prototype.handleSubmit = function (event) {
   PubSub.publish('Form-view:journey-submitted', newJourney);
   console.log(`journey published: ${newJourney}`)
   event.target.reset();
+  console.log(`optional event: ${event.target.optional.value}`)
 };
 
 JourneysFormView.prototype.createJourney = function (form) {
   const newJourney = {
     distance: form.distance.value,
     vehicleType: form.vehicleType.value,
-    fuelType: form.fuelType.value
+    fuelType: form.fuelType.value,
+    optional: form.optional.value
   };
   console.log(`new journey object: ${newJourney}`)
   return newJourney;

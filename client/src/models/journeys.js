@@ -14,7 +14,8 @@ this.fuel = fuel;
 Journeys.prototype.bindEvents = function () {
   PubSub.subscribe('Form-view:journey-submitted', (event) => {
     this.postJourney(event.detail);
-    console.log(`journeys received post event: ${event.detail}`);
+    console.log(`journeys received post event: ${event.detail}`)
+  
   });
 
   PubSub.subscribe('JourneysAllView:journey-delete-clicked', (event) => {
