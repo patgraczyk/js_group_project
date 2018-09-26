@@ -20,7 +20,7 @@ Calculator.prototype.bindEvents = function (){
 
     const emissionsByVehicleType = this.splitCalculationByModeOfTransport(evt.detail);
     const emissionsByFuelType = this.splitCalculationByFuel(evt.detail);
-    const emissionsByOption = this.splitCalculationByOption(evt.detail);
+    const emissionsByOption = this.splitCalculationByUseType(evt.detail);
 
 
     PubSub.publish('Journeys:carbon-data-loaded', carbonData);
@@ -168,14 +168,15 @@ Calculator.prototype.splitCalculationByModeOfTransport = function(allJourneys) {
   console.log(emissionsByVehicleType)
 }
 
-Calculator.prototype.splitCalculationByOption = function(allJourneys) {
+Calculator.prototype.splitCalculationByUseType = function(allJourneys) {
+  console.log(allJourneys)
   const emissionsByUseType = {};
   for (const journey of allJourneys) {
-    if (emissionsByUseType[journey.useType]) {
-      emissionsByUseType[journey.useType] += this.calculateEmissions(journey);
+    if (emissionsByUseType[journey.optional]) {
+      emissionsByUseType[journey.optional] += this.calculateEmissions(journey);
     }
     else {
-      emissionsByUseType[journey.useType] = this.calculateEmissions(journey);
+      emissionsByUseType[journey.optional] = this.calculateEmissions(journey);
     }
   }
   return emissionsByUseType;
