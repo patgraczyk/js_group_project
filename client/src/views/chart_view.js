@@ -71,8 +71,6 @@ ChartView.prototype.renderSummary = function(){
   this.container.appendChild(this.summaryContainer);
 };
 
-
-
 ChartView.prototype.renderEmissionsByVehicle = function(mainNumber) {
   console.log(mainNumber)
   const header = document.createElement('p');
@@ -417,10 +415,10 @@ ChartView.prototype.renderOptionalChart = function(){
         plotShadow: false
     },
     title: {
-        text: 'Optional<br>trips<br>2017',
-        align: 'center',
-        verticalAlign: 'middle',
-        y: 40
+        text: 'Optional trips 2017',
+        // align: 'center',
+        // verticalAlign: 'top',
+        // y: 40
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -438,7 +436,7 @@ ChartView.prototype.renderOptionalChart = function(){
             startAngle: -90,
             endAngle: 90,
             center: ['50%', '75%'],
-            size: '110%'
+            size: '120%'
         }
     },
     series: [{

@@ -11,11 +11,11 @@ JourneysAllView.prototype.bindEvents = function(){
     this.allJourneyData = allJourneyData.detail;
   });
 
-  PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
-    this.allJourneyData = allJourneyData.detail;
-    console.log(`Journey deleted. Journey all view received \n\n ${allJourneyData} \n\n from Journeys:journey-deleted`);
-    this.renderFormView();
-  })
+  // PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
+  //   this.allJourneyData = allJourneyData.detail;
+  //   console.log(`Journey deleted. Journey all view received \n\n ${allJourneyData} \n\n from Journeys:journey-deleted`);
+  //   this.renderFormView();
+  // })
 };
 
 JourneysAllView.prototype.renderFormView = function(){
@@ -23,7 +23,7 @@ JourneysAllView.prototype.renderFormView = function(){
   const renderElement = document.querySelector('#render-view')
   renderElement.innerHTML = '';
   const viewContainer = document.createElement('div');
-  viewContainer.id = "journey-all-view";
+  viewContainer.id = "journeys-all-view";
   const newList = document.createElement('ul');
   
   this.allJourneyData.forEach(journey => {

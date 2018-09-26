@@ -20,10 +20,12 @@ JourneysFormView.prototype.renderFormView = function(){
   form.id = "add-journey-form";
   
   const vehicleTypeLabel = document.createElement('label');
-  vehicleTypeLabel.innerHTML = "Vehicle Type"
+  vehicleTypeLabel.id = "vehicle_type_label";
+  vehicleTypeLabel.innerHTML = "Vehicle Type";
   vehicleTypeLabel.setAttribute('for', 'vehicleType');
   
   const vehicleSelect = document.createElement('select');
+  vehicleSelect.id = "vehicle_select_dropdown"
   vehicleSelect.setAttribute('name', 'vehicleType');
   
   const carOption = document.createElement('option');
@@ -48,10 +50,12 @@ JourneysFormView.prototype.renderFormView = function(){
   vehicleSelect.appendChild(airplaneOption);
 
   const fuelTypeLabel = document.createElement('label');
+  fuelTypeLabel.id = "fuel_type_label"
   fuelTypeLabel.innerHTML = "Fuel Type"
   fuelTypeLabel.setAttribute('for', 'fuelType');
   
   const fuelSelect = document.createElement('select');
+  fuelSelect.id = "fuel_select_dropdown"
   fuelSelect.setAttribute('name', 'fuelType');
   
   const petrolOption = document.createElement('option');
@@ -76,17 +80,21 @@ JourneysFormView.prototype.renderFormView = function(){
   fuelSelect.appendChild(electricOption);
 
   const distanceLabel = document.createElement('label');
-  distanceLabel.innerHTML = "Distance"
+  distanceLabel.id = "distance_label";
+  distanceLabel.innerHTML = "Distance";
   distanceLabel.setAttribute('for', 'distance');  
 
   const distanceInput = document.createElement('input');
+  distanceInput.id = "distance_input";
   distanceInput.setAttribute('type', 'text');
   distanceInput.setAttribute('name', 'distance');
 
   const unitParagraph = document.createElement('p');
+  unitParagraph.id = "unit_paragraph"
   unitParagraph.innerHTML = "Was this distance in miles or km?";
 
   const kmLabel = document.createElement('label');
+  kmLabel.id = "km_label";
   kmLabel.innerHTML = "KM";
 
   const kmInput = document.createElement('input');
@@ -97,6 +105,7 @@ JourneysFormView.prototype.renderFormView = function(){
   kmInput.setAttribute('checked','checked');
 
   const milesLabel = document.createElement('label');
+  milesLabel.id = "miles_label";
   milesLabel.innerHTML = "Miles";
 
   const milesInput = document.createElement('input');
@@ -106,9 +115,11 @@ JourneysFormView.prototype.renderFormView = function(){
   milesInput.setAttribute('value', 'Miles');
 
   const optionalParagraph = document.createElement('p');
+  optionalParagraph.id = "optional_paragraph";
   optionalParagraph.innerHTML = "Was this journey optional?";
 
   const yesLabel = document.createElement('label');
+  yesLabel.id = "yes_label";
   yesLabel.innerHTML = "Yes";
 
   const yesInput = document.createElement('input');
@@ -119,6 +130,7 @@ JourneysFormView.prototype.renderFormView = function(){
   yesInput.setAttribute('checked','checked');
 
   const noLabel = document.createElement('label');
+  noLabel.id = "no_label";
   noLabel.innerHTML = "No";
 
   const noInput = document.createElement('input');
