@@ -13,12 +13,8 @@ document.addEventListener ('DOMContentLoaded', () => {
   console.log('js loaded')
 
   // const chartContainer = document.querySelector();
-  const resultChart = new ChartView();
-  resultChart.bindEvents();
-  
-  // const mapContainer = document.querySelector('#mapid');
-  // const mapView = new MapView(mapContainer);
-  // mapView.bindEvents();
+  // const resultChart = new ChartView();
+  // resultChart.bindEvents();
 
   const journeys = new Journeys();
   journeys.bindEvents();

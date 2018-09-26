@@ -198,3 +198,29 @@ h1 {
 #render-view #mapHeader {
     text-align: center;
 }
+
+#render-view #all_charts_container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+        "rs rs rs"
+        "ec rd ."
+        ". . ."
+        ". . .";
+  
+      
+}
+
+#render-view #render_emissions_chart{
+    grid-area: ec;
+}
+
+#render-view #render_summary_container{
+    grid-area: rs;
+}
+
+#render-view #render_distance_chart {
+    grid-area: rd;
+}

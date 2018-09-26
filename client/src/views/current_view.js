@@ -1,6 +1,7 @@
 const JourneysFormView = require('./journeys_form_view');
 const JourneysAllView = require('./journeys_all_view');
 const JourneysImpactView = require('./journeys_impact_view');
+const ChartView = require('./chart_view');
 const MapView = require('./map_view');
 
 const CurrentView = function(defaultView, navElement){
@@ -11,21 +12,15 @@ const CurrentView = function(defaultView, navElement){
 const journeysFormView = new JourneysFormView();
 const journeysAllView = new JourneysAllView();
 journeysAllView.bindEvents();
-const journeysImpactView = new JourneysImpactView();
-journeysImpactView.bindEvents();
-
-// const mapContainer = document.querySelector('#mapid');
-const mapView = new MapView();
-mapView.bindEvents();
-
-
+// const journeysImpactView = new JourneysImpactView();
+// journeysImpactView.bindEvents();
 // const mapView = new MapView();
 // mapView.bindEvents();
-
-
+const chartView = new ChartView();
+chartView.bindEvents();
 
 CurrentView.prototype.bindEvents = function () {
-    this.render('nav_add_journey');
+    this.render('nav_maps');
     this.navElement.forEach(element => {
         element.addEventListener('click', (event) => {
         console.log(`item clicked: ${event.target.id}`)
@@ -41,14 +36,15 @@ CurrentView.prototype.render = function(view){
             journeysFormView.renderFormView();
         break;
         case 'nav_co2_impact':
-            journeysImpactView.renderAll();
+            chartView.renderAllCharts();
+            chartView.renderSummary();
         break;
         case 'nav_all_journeys':
             journeysAllView.renderFormView();
         break;
-        case 'nav_maps':
-            mapView.renderMap();
-        break;
+        // case 'nav_maps':
+        //     mapView.renderMap();
+        // break;
     }
 
 };
