@@ -14,8 +14,8 @@ const journeysAllView = new JourneysAllView();
 journeysAllView.bindEvents();
 // const journeysImpactView = new JourneysImpactView();
 // journeysImpactView.bindEvents();
-// const mapView = new MapView();
-// mapView.bindEvents();
+const mapView = new MapView();
+mapView.bindEvents();
 const chartView = new ChartView();
 chartView.bindEvents();
 
@@ -42,9 +42,9 @@ CurrentView.prototype.render = function(view){
         case 'nav_all_journeys':
             journeysAllView.renderFormView();
         break;
-        // case 'nav_maps':
-        //     mapView.renderMap();
-        // break;
+        case 'nav_maps':
+            mapView.renderMap();
+        break;
     }
 
 };
