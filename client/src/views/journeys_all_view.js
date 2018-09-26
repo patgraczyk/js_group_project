@@ -7,10 +7,15 @@ const JourneysAllView = function() {
 
 JourneysAllView.prototype.bindEvents = function(){
   PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
-    console.log(`Journey all view received \n\n ${allJourneyData} \n\n from Journeys:data-loaded`)
+    console.log(`Journey all view received \n\n ${allJourneyData.detail} \n\n from Journeys:data-loaded`)
     this.allJourneyData = allJourneyData.detail;
   });
-    
+
+  PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
+    this.allJourneyData = allJourneyData.detail;
+    console.log(`Journey deleted. Journey all view received \n\n ${allJourneyData} \n\n from Journeys:journey-deleted`);
+    this.renderFormView();
+  })
 };
 
 JourneysAllView.prototype.renderFormView = function(){
@@ -25,7 +30,8 @@ JourneysAllView.prototype.renderFormView = function(){
     const distance = journey.distance;
     const vehicleType = journey.vehicleType;
     const fuelType = journey.fuelType;
-    const listElement = this.createListElement(distance, vehicleType, fuelType);
+    const id = journey._id;
+    const listElement = this.createListElement(id, distance, vehicleType, fuelType);
     newList.appendChild(listElement)
   })
   viewContainer.appendChild(newList);
@@ -35,7 +41,7 @@ JourneysAllView.prototype.renderFormView = function(){
 
 };
 
-JourneysAllView.prototype.createListElement = function(distance, vehicleType, fuelType){
+JourneysAllView.prototype.createListElement = function(id, distance, vehicleType, fuelType){
   const newListElement = elementHelper('li', {
     'class': 'card'
   });
@@ -71,6 +77,18 @@ JourneysAllView.prototype.createListElement = function(distance, vehicleType, fu
 
   fuelLabel.innerHTML = `Fuel ${fuelType}`
 
+  const deleteButton = document.createElement('input');
+  deleteButton.setAttribute('type', 'submit')
+  deleteButton.classList.add('delete-btn');
+  deleteButton.id = id;
+  deleteButton.value = 'Delete';
+
+  deleteButton.addEventListener('click', (event) => {
+    if (confirm('DELETE JOURNEY?')) {
+      PubSub.publish('JourneysAllView:journey-delete-clicked', event.target.id)
+    };
+  });
+
   newListElement.appendChild(distanceText);
   newListElement.appendChild(headerLine);
   newListElement.appendChild(distanceResult);
@@ -78,6 +96,7 @@ JourneysAllView.prototype.createListElement = function(distance, vehicleType, fu
   newListElement.appendChild(vehicleLine);
   newListElement.appendChild(fuelLabel);
   newListElement.appendChild(fuelLine);
+  newListElement.appendChild(deleteButton);
   return newListElement;
 }
 
