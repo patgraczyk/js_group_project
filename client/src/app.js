@@ -24,8 +24,8 @@ document.addEventListener ('DOMContentLoaded', () => {
   journeys.bindEvents();
   journeys.getData();
 
-  const bikes = new Bikes();
-  bikes.getData();
+  // const bikes = new Bikes();
+  // bikes.getData();
 
   const chargePoints = new ChargePoints();
   chargePoints.getData();
