@@ -11,7 +11,6 @@ const MapView = function(){
 MapView.prototype.bindEvents = function(){
     PubSub.subscribe('Bike:bikes-loaded', (event) => {
         this.allBikes = event.detail;
-        console.log(event.detail)
     })
 
     // PubSub.subscribe('Chargers:data-loaded', (event) => {
@@ -54,6 +53,8 @@ MapView.prototype.renderMap = function(){
     // const arrayOfBikeLocations = this.getLocations(allBikes);
 
     // const allLocations = this.getLocations(this.allBikes)
+    const arrayOfBikes = this.allBikes;
+    console.log(this.allBikes)
 	var mymap = L.map(mapContainer).setView([51.505, -0.09], 13);
 
     L.tileLayer
@@ -65,17 +66,13 @@ MapView.prototype.renderMap = function(){
 		id: 'mapbox.streets'
     })
     .addTo(mymap);
-    markers = [{
-        "lat": 51.521283,
-        "lon": -0.084605  
-    },
-    { "lat": 51.499606,
-      "lon": -0.197574 
-    }];
 
-    for (var i=0; i < markers.lenght; ++i); {
+    markers = [arrayOfBikes]
+    console.log(arrayOfBikes)
+
+    for (var i=0; i < 5; i++); {
         L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
-    	.bindPopup("<b>Bike location</b><br>").openPopup();
+    	
 	// var popup = L.popup();
     }
 }
