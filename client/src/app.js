@@ -30,7 +30,7 @@ document.addEventListener ('DOMContentLoaded', () => {
   calclculator.bindEvents();
 
   const navElement = document.querySelectorAll('li');
-  const currentView = new CurrentView(1, navElement);
+  const currentView = new CurrentView('nav_add_journey', navElement);
   currentView.bindEvents();
 
 

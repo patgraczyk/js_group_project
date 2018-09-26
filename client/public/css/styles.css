@@ -6,7 +6,7 @@
 html, body{
     margin: 0;
     width: 100%;
-    overflow: auto;
+    font-family: Helvetica;
 }
 body {
     background-color: white;
@@ -23,8 +23,8 @@ h1 {
 .container {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(165px auto);
-    grid-template-rows: 100px auto;
+    grid-template-columns: 220px auto;
+    grid-template-rows: 140px auto;
     grid-template-areas:
         "h h h h h h h h h h h h"
         "m c c c c c c c c c c c"
@@ -41,20 +41,23 @@ nav {
 }
 
 .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: left;
     grid-area: h;
-    background-color: #5477A0;
-    box-shadow: 0px 6px 6px 0px rgba(0,0,0,0.14);
+    /* background-color: #5477A0; */
+    background-color: white;
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.14);
     z-index: 1;
-    vertical-align: middle;
 }
 
 .logo-wrapper h2 {
     display: inline-block;
     padding-left: 40px;
-    color: white;
-    font-family: 'Fugaz One';
+    /* color: white; */
+    color: rgb(56, 56, 56);
     letter-spacing: 3px;
-    font-size: 50px;
+    font-size: 60px;
 }
 
 .logo-wrapper img { 
@@ -63,54 +66,48 @@ nav {
     width: 100px;
 }
 
-h1 {
-    font-family: 'Signika Negative', sans-serif;
-}
+/* h1 {
+   
+} */
 
 .scrollmenu {
-    background-color: #5477A0;
-    width: 165px;
+    /* background-color: #5477A0; */
+    background-color: white;
     height: 100%;
     z-index: -1;
+    box-shadow: 0px 6px 6px 3px rgba(0,0,0,0.14);
 }
 
 .scrollmenu li {
-    font-family: 'Signika Negative', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     display: block;
-    color: white;
+    /* color: white; */
+    color:rgb(56, 56, 56);
     text-align: left;
-    padding: 14px;
+    padding: 20px 20px;
     text-decoration: none;
 }
 
 .scrollmenu li:hover{
-    background-color: white;
-    color: black;
-}
-
-#add-journey {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    height: 100%;
+    /* background-color: white;
+    color: black; */
+    background-color: rgb(56, 56, 56);
+    color: white;
 }
 
 #add-journey-form {
     margin: 20px 0;
+    font-size: 25px;
 }
 
-#add-journey h1 {
-    padding-top: 50px;
+#add-journey-form option{
+    font-size: 25px;
 }
+
 
 #add-journey-form input, select {
     display: block;
     margin: 10px auto;
-}
-
-#add-journey-form label {
-    font-family: 'Alegreya Sans', sans-serif;
 }
 
 #add-journey-form input[type="radio"]{
@@ -120,6 +117,11 @@ h1 {
 
 #add-journey-form p {
     margin: 5px 0;
+}
+
+#render-view {
+    overflow: auto;
+    padding: 30px;  
 }
 
 #render-view ul {
@@ -203,46 +205,54 @@ h1 {
 #render-view #all_charts_container {
     height: 100%;
     display: grid;
+    justify-items: center;
+    grid-gap: 50px;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     grid-template-areas:
         "rs rs rs rs rs rs"
+        "fp fp oc oc vt vt"
         "ec ec ec rd rd rd"
-        "pc pc pc pd pd pd"
-        "fp fp oc oc vt vt "
+        "pc pc pc pc pc pc"
+        "pd pd pd pd pd pd"
         " . . . . . .";
   
       
 }
 
-#render-view #render_emissions_chart{
-    grid-area: ec;
-  
-  
-}
-
 #render-view #render_summary_container{
     grid-area: rs;
 
+    
+}
+
+#render-view #render_emissions_chart{
+    grid-area: ec;
+    height: 500px;
+    width: 800px;
+    
 }
 
 #render-view #render_distance_chart {
     grid-area: rd;
-
+    height: 500px;
+    width: 800px;
 }
 #render-view #render_projections_chart {
     grid-area: pc;
- 
+    height: 500px;
+    width: 1500px;
 }
 
 #render-view #render_projections_distance {
     grid-area: pd;
-
+    height: 500px;
+    width: 1500px;
 }
 
 #render-view #render_fuel_pie_chart {
     grid-area: fp;
-    
+
 }
 
 #render-view #render_vehicle_type_chart {
@@ -251,6 +261,9 @@ h1 {
 }
 
 #render-view #render_optional_chart {
-    grid-area: oc;
-    
+    grid-area: oc;    
+}
+
+#journeys-all-view {
+    text-align: justify;
 }
