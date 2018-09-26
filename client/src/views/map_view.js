@@ -69,13 +69,46 @@ MapView.prototype.renderMap = function(){
     })
     .addTo(mymap);
 
-    markers = [arrayOfBikes]
-    console.log(arrayOfBikes)
+    L.marker([51.541596, -0.125441]).addTo(mymap),
+    L.marker([51.516525, -0.144647]).addTo(mymap),
+    L.marker([51.37439, -0.304065]).addTo(mymap),
+    L.marker([51.37439, -0.304065]).addTo(mymap),
+    L.marker([51.37439, -0.304065]).addTo(mymap),
+    L.marker([51.512344, -0.129508]).addTo(mymap),
+    L.marker([51.512344, -0.129508]).addTo(mymap),
+    L.marker([51.51236, -0.129549]).addTo(mymap),
+    L.marker([51.490597, -0.207703]).addTo(mymap),
+    L.marker([51.506207, -0.102003]).addTo(mymap),
+    L.marker([51.497208, -0.089822]).addTo(mymap),
+    L.marker([51.504707, -0.093855]).addTo(mymap)
+}
 
-    for (var i=0; i < 5; i++); {
-        // L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
+    // markers = [
+    //     {
+    //     "lat": 51.541596,
+    //     "lon": -0.125441,
+    //     "commonName": "York Way, Kings Cross"
+    //     },
+    //     {
+    //     "lat": 51.516525,
+    //     "lon": -0.144647,
+    //      "commonName": "Q-Park, Oxford Street, Cavendish Square Station"
+    //     }
+    // ]
+
+    // for (var i=0; i < 2; i++); {
+    //     L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
     	
 	// var popup = L.popup();
-    }
-}
+    // }
+
+
+    // for (var i = 0; i < 700; i++) {
+    //     marker = new L.marker([markers[i][8],markers[i][9]])
+    //         .bindPopup(markers[i][0])
+    //         .addTo(map);
+    // }
+ 
+
+
 module.exports = MapView;
