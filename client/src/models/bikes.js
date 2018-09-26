@@ -7,15 +7,15 @@ this.request = new Request('https://api.tfl.gov.uk/bikepoint');
 
 }
 
-Bikes.prototype.getData = function() {
-    // const request = new Request('https://api.tfl.gov.uk/bikepoint');
-    this.request.get() 
-    .then((data)=> {
-      this.bikes = data;
-      PubSub.publish('Bike:bikes-loaded', this.bikes);
-      console.log(this.bikes)
-    })
-  }
+// Bikes.prototype.getData = function() {
+//     // const request = new Request('https://api.tfl.gov.uk/bikepoint');
+//     this.request.get() 
+//     .then((data)=> {
+//       this.bikes = data;
+//       PubSub.publish('Bike:bikes-loaded', this.bikes);
+//       console.log(this.bikes)
+//     })
+//   }
 
 //   Bikes.prototype.getData = function() {
 //     const request = new Request('https://api.tfl.gov.uk/bikepoint');

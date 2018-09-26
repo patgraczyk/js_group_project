@@ -1,7 +1,6 @@
 const Request = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
-
 const Journeys = function(distance, vehicle, fuel){
 this.request = new Request('http://localhost:3000/api/journeys')
 this.journeys = [];
@@ -13,10 +12,15 @@ this.fuel = fuel;
 }
 
 Journeys.prototype.bindEvents = function () {
-    PubSub.subscribe('Form-view:journey-submitted', (event) => {
-        this.postJourney(event.detail);
-        console.log(`journeys received event: ${event.detail}`);
-    });
+  PubSub.subscribe('Form-view:journey-submitted', (event) => {
+    this.postJourney(event.detail);
+    console.log(`journeys received post event: ${event.detail}`);
+  });
+
+  PubSub.subscribe('JourneysAllView:journey-delete-clicked', (event) => {
+    this.deleteJourney(event.detail);
+    console.log(`Journeys received delete event: ${event.detail}`);
+  });
 
 };
 
@@ -61,17 +65,17 @@ Journeys.prototype.postJourney = function (newJourney) {
 //     .catch((err) => console.error(err));
 // };
 //
-// This is a simple delete request, edit as you wish
-// BucketList.prototype.delete = function(itemToDelete) {
-//   const id = itemToDelete._id;
-//   this.request
-//     .delete(id)
-//     .then((allJourneys) => {
-//       this.journeys = allJourneys;
-//       PubSub.publish('Journeys:all-data-loaded', this.journeys);
-//     })
-//     .catch((err) => console.error(err));
-// };
+
+Journeys.prototype.deleteJourney = function(itemToDelete) {
+  const id = itemToDelete;
+  this.request
+    .delete(id)
+    .then((allJourneys) => {
+      this.journeys = allJourneys;
+      PubSub.publish('Journeys:data-loaded', this.journeys);
+    })
+    .catch((err) => console.error(err));
+};
 
 
 module.exports = Journeys;

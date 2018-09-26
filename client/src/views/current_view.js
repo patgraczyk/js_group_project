@@ -16,7 +16,7 @@ journeysImpactView.bindEvents();
 
 
 CurrentView.prototype.bindEvents = function () {
-    this.render(1);
+    this.render('nav_add_journey');
     this.navElement.forEach(element => {
         element.addEventListener('click', (event) => {
         console.log(`item clicked: ${event.target.id}`)
@@ -25,16 +25,16 @@ CurrentView.prototype.bindEvents = function () {
   });
 };
 
-CurrentView.prototype.render = function(num){
+CurrentView.prototype.render = function(view){
     console.log(`default view is currently: ${this.defaultView}`)
-    switch(parseInt(num)){
-        case 1:
+    switch(view){
+        case 'nav_add_journey':
             journeysFormView.renderFormView();
         break;
-        case 2:
+        case 'nav_co2_impact':
             journeysImpactView.renderAll();
         break;
-        case 3:
+        case 'nav_all_journeys':
             journeysAllView.renderFormView();
         break;
     }
