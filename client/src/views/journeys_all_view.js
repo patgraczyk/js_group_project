@@ -11,11 +11,11 @@ JourneysAllView.prototype.bindEvents = function(){
     this.allJourneyData = allJourneyData.detail;
   });
 
-  // PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
-  //   this.allJourneyData = allJourneyData.detail;
-  //   console.log(`Journey deleted. Journey all view received \n\n ${allJourneyData} \n\n from Journeys:journey-deleted`);
-  //   this.renderFormView();
-  // })
+  PubSub.subscribe('Journeys:data-loaded', (allJourneyData) => {
+    this.allJourneyData = allJourneyData.detail;
+    console.log(`Journey deleted. Journey all view received \n\n ${allJourneyData} \n\n from Journeys:journey-deleted`);
+    this.renderFormView();
+  })
 };
 
 JourneysAllView.prototype.renderFormView = function(){
@@ -31,6 +31,7 @@ JourneysAllView.prototype.renderFormView = function(){
     const vehicleType = journey.vehicleType;
     const fuelType = journey.fuelType;
     const id = journey._id;
+    console.log(`item id: ${id}`)
     const listElement = this.createListElement(id, distance, vehicleType, fuelType);
     newList.appendChild(listElement)
   })
@@ -77,14 +78,22 @@ JourneysAllView.prototype.createListElement = function(id, distance, vehicleType
 
   fuelLabel.innerHTML = `Fuel ${fuelType}`
 
-  const deleteButton = document.createElement('input');
+  const deleteButton = document.createElement('button');
   deleteButton.setAttribute('type', 'submit')
   deleteButton.classList.add('delete-btn');
   deleteButton.id = id;
   deleteButton.value = 'Delete';
 
+  const faIcon = document.createElement('i');
+  faIcon.id = id;
+  faIcon.classList.add("fa");
+  faIcon.classList.add("fa-times-circle");
+  faIcon.classList.add("fa-3x");
+  deleteButton.appendChild(faIcon);
+
   deleteButton.addEventListener('click', (event) => {
-    if (confirm('DELETE JOURNEY?')) {
+    console.log('delete button clicked')
+    if (confirm('Do you want to delete this journey?')) {
       PubSub.publish('JourneysAllView:journey-delete-clicked', event.target.id)
     };
   });
@@ -97,6 +106,7 @@ JourneysAllView.prototype.createListElement = function(id, distance, vehicleType
   newListElement.appendChild(fuelLabel);
   newListElement.appendChild(fuelLine);
   newListElement.appendChild(deleteButton);
+  // newListElement.appendChild(faIcon);
   return newListElement;
 }
 

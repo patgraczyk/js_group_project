@@ -37,7 +37,7 @@ JourneysFormView.prototype.renderFormView = function(){
   motorbikeOption.setAttribute('value', 'motorbike');
   
   const trainOption = document.createElement('option');
-  trainOption.innerHTML = "train";
+  trainOption.innerHTML = "Train";
   trainOption.setAttribute('value', 'train');
   
   const airplaneOption = document.createElement('option');

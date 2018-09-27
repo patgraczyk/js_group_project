@@ -47,6 +47,7 @@ ChartView.prototype.renderAllCharts = function(){
   renderView.innerHTML = '';
   renderView.appendChild(this.container);
 
+
   this.renderEmissionsChart(this.totalEmissions); 
   this.renderDistanceChart(this.totalDistance);
   this.renderProjectionsChart(this.projectionYear, this.projectionTenYear);
@@ -64,7 +65,11 @@ ChartView.prototype.renderAllCharts = function(){
 ChartView.prototype.renderSummary = function(){
   this.summaryContainer = document.createElement('div');
   this.summaryContainer.id = 'render_summary_container';
+  const summaryHeader = document.createElement('h4');
+  this.summaryContainer.appendChild(summaryHeader);
+  summaryHeader.textContent="Emissions summary"
   const paragraph = document.createElement('p');
+  paragraph.id = 'summary_paragraph';
   paragraph.innerHTML = `Overall emissions are: ${this.totalEmissions} <br/ >
   Total distance is: ${this.totalDistance}<br/ >`
   this.summaryContainer.appendChild(paragraph);
@@ -73,9 +78,9 @@ ChartView.prototype.renderSummary = function(){
 
 ChartView.prototype.renderEmissionsByVehicle = function(mainNumber) {
   console.log(mainNumber)
-  const header = document.createElement('p');
+  const header = document.createElement('h4');
   this.summaryContainer.appendChild(header);
-  header.textContent="Emissions By Mode of transport"
+  header.textContent="Emissions by mode of transport"
   for (var key in mainNumber){
     if (mainNumber.hasOwnProperty(key)) {
       const listItem = document.createElement('li');
@@ -87,9 +92,9 @@ ChartView.prototype.renderEmissionsByVehicle = function(mainNumber) {
 
 ChartView.prototype.renderFilterFuel = function(mainNumber) {
   console.log(mainNumber)
-  const header = document.createElement('p');
+  const header = document.createElement('h4');
   this.summaryContainer.appendChild(header);
-  header.textContent="Emissions By Fuel"
+  header.textContent="Emissions by fuel type"
   for (var key in mainNumber){
     if (mainNumber.hasOwnProperty(key)) {
       const listItem = document.createElement('li');
