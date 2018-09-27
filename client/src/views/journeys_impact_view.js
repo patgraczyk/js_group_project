@@ -105,21 +105,7 @@ const JourneysImpactView = function(){
 module.exports = JourneysImpactView;
 
 
-// PlanetInfoView.prototype.render = function(planet) {
-//   const list = document.createElement('ul');
-//   for (var key in planet){
-//     if (planet.hasOwnProperty(key)) {
-//       const listItem = document.createElement('li');
-//       listItem.textContent = `${key}: ${planet[key]}`;
-//       this.container.innerHTML = '';
-//       list.appendChild(listItem);
-//     }
-//   } 
-//   this.container.appendChild(list);
-//   const image = document.createElement('img');
-//   image.src = planet.image;
-//   list.appendChild(image);
-// };
+
 
 
 
