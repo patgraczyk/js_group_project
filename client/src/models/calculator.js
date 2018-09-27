@@ -99,11 +99,11 @@ Calculator.prototype.getConversionFactor = function(journeySubmitted){
 // emissions of a car / fuel type / this part does not link yet
 Calculator.prototype.carJourneyFactor = function(journeySubmitted){
   if (journeySubmitted.fuelType === 'Petrol') {
-    return 0.11529;
+    return 0.22715;
   } else if (journeySubmitted.fuelType === 'Diesel') {
     return 0.11145;
   } else if (journeySubmitted.fuelType === 'Hybrid') {
-    return 2.2 +0.00622;
+    return 0.02255 +0.00622;
   }
 };
 
