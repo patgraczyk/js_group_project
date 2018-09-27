@@ -16,7 +16,7 @@ body {
 
 h1 {
     text-align: center;
-    margin: 60px auto;
+    margin: 40px auto;
     font-size: 3em;
 }
 
@@ -95,16 +95,6 @@ nav {
     color: white;
 }
 
-#add-journey-form {
-    margin: 20px 0;
-    font-size: 25px;
-}
-
-#add-journey-form option{
-    font-size: 25px;
-}
-
-
 #add-journey-form input, select {
     display: block;
     margin: 10px auto;
@@ -113,10 +103,6 @@ nav {
 #add-journey-form input[type="radio"]{
     display: inline;
     margin: 0 5px;
-}
-
-#add-journey-form p {
-    margin: 5px 0;
 }
 
 #render-view {
@@ -202,6 +188,7 @@ nav {
     text-align: center;
 }
 
+
 #render-view #all_charts_container {
     overflow: auto;
     height: 100%;
@@ -268,4 +255,139 @@ nav {
 #journeys-all-view {
     text-align: justify;
     overflow: auto;
+}
+
+#journeys-form-view{
+    display: grid;
+    justify-items: center;
+}
+
+#add-journey-form {
+    width: 375px;
+    margin: 20px 0;
+    font-size: 25px; 
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-areas:
+        "vtl vtl vsd vsd"
+        "ftl ftl fsd fsd"
+        "dl dl di di"
+        ". . . ."
+        "up up up up"
+        "kl uk ml um"
+        "op op op op"
+        "yl oy nl on"
+        "sb sb sb sb"
+        "sb sb sb sb";
+}
+
+#add-journey-form p {
+    margin: 5px 0;
+}
+
+#add-journey-form #vehicle_type_label {
+    grid-area: vtl;
+    justify-self: end;
+}
+
+#add-journey-form #vehicle_select_dropdown {
+    grid-area: vsd;
+}
+
+#add-journey-form #fuel_type_label {
+    grid-area: ftl;
+    justify-self: end;
+}
+
+#add-journey-form #fuel_select_dropdown {
+    grid-area: fsd;
+}
+
+#add-journey-form #distance_label {
+    grid-area: dl;
+    justify-self: end;
+}
+
+#add-journey-form #distance_input {
+    grid-area: di;
+    padding: 5px;
+    font-size: 20px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+#add-journey-form #unit_paragraph {
+    grid-area: up;
+    justify-self: center;
+
+}
+
+#add-journey-form #km_label {
+    grid-area: kl;
+    justify-self: end;
+    margin-right: 20px;
+}
+
+#add-journey-form #unit-km {
+    grid-area: uk;
+
+}
+
+#add-journey-form #miles_label{
+    grid-area: ml;
+    justify-self: end;
+    margin-right: 20px; 
+}
+
+#add-journey-form #unit-miles {
+    grid-area: um;
+}
+
+#add-journey-form #optional_paragraph {
+    grid-area: op;
+    justify-self: center;
+}
+
+#add-journey-form #yes_label {
+    grid-area: yl;
+    justify-self: end;
+    margin-right: 20px;
+}
+
+#add-journey-form #optional-yes{
+    grid-area: oy;
+}
+
+#add-journey-form #no_label {
+    grid-area: nl;
+    justify-self: end;
+    margin-right: 20px;  
+}
+
+#add-journey-form #optional-no {
+    grid-area: on;
+}
+
+#add-journey-form #save-btn {
+    grid-area: sb;
+    font-size: 25px;
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+}
+#add-journey-form #save-btn:hover {
+    background-color: rgb(56, 56, 56);
+    color: white;
+}
+
+select {
+    font-size: 20px;    
+}
+
+input[type='radio']{
+    width: 25px;
+    height: 25px;
 }
