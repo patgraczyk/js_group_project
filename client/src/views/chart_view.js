@@ -47,7 +47,7 @@ ChartView.prototype.renderAllCharts = function(){
   renderView.innerHTML = '';
   renderView.appendChild(this.container);
 
-
+  this.renderHeader();
   this.renderEmissionsChart(this.totalEmissions); 
   this.renderDistanceChart(this.totalDistance);
   this.renderProjectionsChart(this.projectionYear, this.projectionTenYear);
@@ -61,6 +61,16 @@ ChartView.prototype.renderAllCharts = function(){
   this.renderFilterFuel(this.splitFuel);
 
 };
+
+ChartView.prototype.renderHeader = function() {
+  const headerContainer = document.createElement('div');
+  headerContainer.id = 'chart_view_header_element';
+  const header = document.createElement('h1');
+  header.id = "chart_view_header";
+  header.textContent = "CO2 Impact"
+  headerContainer.appendChild(header);
+  this.container.appendChild(headerContainer);
+}
 
 ChartView.prototype.renderSummary = function(){
   this.summaryContainer = document.createElement('div');

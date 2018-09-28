@@ -22,10 +22,17 @@ JourneysAllView.prototype.renderFormView = function(){
    
   const renderElement = document.querySelector('#render-view')
   renderElement.innerHTML = '';
+  const journeysAllViewContainer = document.createElement('div');
+  journeysAllViewContainer.id = 'journeys_all_view_container';
   const viewContainer = document.createElement('div');
   viewContainer.id = "journeys-all-view";
   const newList = document.createElement('ul');
   
+  const header = document.createElement('h1');
+  header.id = "all_journeys_header";
+  header.textContent = "All Journeys";
+  renderElement.appendChild(header);
+
   this.allJourneyData.forEach(journey => {
     const distance = journey.distance;
     const vehicleType = journey.vehicleType;
@@ -36,7 +43,8 @@ JourneysAllView.prototype.renderFormView = function(){
     newList.appendChild(listElement)
   })
   viewContainer.appendChild(newList);
-  renderElement.appendChild(viewContainer);
+  journeysAllViewContainer.appendChild(viewContainer);
+  renderElement.appendChild(journeysAllViewContainer);
   
   console.log(`Journeys all view rendered: ${newList}`)
 

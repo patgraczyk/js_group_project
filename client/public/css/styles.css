@@ -201,7 +201,6 @@ nav {
 
 
 #render-view #all_charts_container {
-    margin-top: 100px;
     overflow: auto;
     height: 100%;
     display: grid;
@@ -222,7 +221,7 @@ nav {
       
 }
 
-#charts_header_div {
+#render-view #chart_view_header_element {
     grid-area: ch;
 }
 
@@ -271,8 +270,9 @@ nav {
 }
 
 #journeys-all-view {
-    text-align: justify;
+    /* text-align: justify; */
     overflow: auto;
+
 }
 
 #journeys-form-view{
