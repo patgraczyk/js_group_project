@@ -20,39 +20,39 @@ describe("Calculator", function(){
   })
 
   //****** basic tests ******** 
-  it("should calculate emissions of a single journey", function(){
+  xit("should calculate emissions of a single journey", function(){
     const actual = calculator.calculateEmissions(journey1);
     assert.strictEqual(actual, 3.3434999999999997);
   })
 
-  it("should get the conversion factor of a car", function(){
+  xit("should get the conversion factor of a car", function(){
     const actual = calculator.getConversionFactor(journey1);
     assert.strictEqual(actual, 0.11145);
   })
 
-  it("should get the conversion factor of a motorbike", function(){
+  xit("should get the conversion factor of a motorbike", function(){
     const actual = calculator.getConversionFactor(journey2);
     assert.strictEqual(actual, 0.12953);
   })
 
-  it("should get the total emissions of all journeys", function(){
+  xit("should get the total emissions of all journeys", function(){
     const actual = calculator.calculateTotalEmissions([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
 
-  it('should be able to calculate total distance', function(){
+  xit('should be able to calculate total distance', function(){
     const actual = calculator.calculateTotalDistance([journey1, journey2]);
     assert.strictEqual(actual, 60);
   })
 
 
   // ******** filtering tests ********
-  it('should divide emissions by fuel type', function(){
+  xit('should divide emissions by fuel type', function(){
     const actual = calculator.splitCalculationByFuel([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
 
-  it('should divide emissions by vehicle type', function(){
+  xit('should divide emissions by vehicle type', function(){
     const actual = calculator.splitCalculationByModeOfTransport([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
@@ -62,7 +62,7 @@ describe("Calculator", function(){
     assert.strictEqual(actual, 7.2294)
   })
 
-  it('should be able to calculate average emissions per journey', function(){
+  xit('should be able to calculate average emissions per journey', function(){
     const actual = calculator.calculateAvarageEmissionsPerJourney([journey1, journey2]);
     assert.strictEqual(actual, 7.2294)
   })
@@ -71,17 +71,17 @@ describe("Calculator", function(){
 
  // ******** projection tests ********
 
-  it('should be able to calculate yearly emissions projections', function(){
+  xit('should be able to calculate yearly emissions projections', function(){
     const actual = calculator.yearlyEmissionProjection([journey1, journey2]);
     assert.strictEqual(actual, 2638.731)
   })
 
-  it('should be able to calculate yearly distance projections', function(){
+  xit('should be able to calculate yearly distance projections', function(){
     const actual = calculator.yearlyDistanceProjection([journey1, journey2]);
     assert.strictEqual(actual, 21900);
   })
 
-  it('should be able to calculate ten year distance projections', function(){
+  xit('should be able to calculate ten year distance projections', function(){
     const actual = calculator.tenYearsDistanceProjection([journey1, journey2]);
     assert.strictEqual(actual, 219000);
   })

@@ -1,7 +1,7 @@
 // seed data here
 
 use travelInformation;
-// db.dropDatabase();
+db.dropDatabase();
 
 
 db.journeys.insertMany([
