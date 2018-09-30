@@ -81,6 +81,20 @@ MapView.prototype.renderMap = function(){
     L.marker([51.506207, -0.102003]).addTo(mymap),
     L.marker([51.497208, -0.089822]).addTo(mymap),
     L.marker([51.504707, -0.093855]).addTo(mymap)
+
+    // markers = arrayOfBikes
+    // console.log(arrayOfBikes)
+
+    // for (var i=0; i<700; i++); {
+    //     L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
+	// var popup = L.popup();
+    // }
+    // for (var i = 0; i < 700; i++) {
+    //     marker = new L.marker([markers[i][8],markers[i][9]])
+    //         .bindPopup(markers[i][0])
+    //         .addTo(map);
+    // }
+
 }
 
     // markers = [
@@ -96,6 +110,8 @@ MapView.prototype.renderMap = function(){
     //     }
     // ]
 
+
+
     // for (var i=0; i < 2; i++); {
     //     L.marker([markers[i].lat, markers[i].lon]).addTo(mymap)
     	
@@ -103,11 +119,7 @@ MapView.prototype.renderMap = function(){
     // }
 
 
-    // for (var i = 0; i < 700; i++) {
-    //     marker = new L.marker([markers[i][8],markers[i][9]])
-    //         .bindPopup(markers[i][0])
-    //         .addTo(map);
-    // }
+
  
 
 
