@@ -81,8 +81,8 @@ Calculator.prototype.calculateEmissions = function(journey) {
 Calculator.prototype.getConversionFactor = function(journeySubmitted){
   console.log(journeySubmitted.vehicleType)
     if (journeySubmitted.vehicleType === 'car') {
-      // return this.carJourneyFactor(journeySubmitted)
-      return 45
+      return this.carJourneyFactor(journeySubmitted)
+      // return 45
     } else if (journeySubmitted.vehicleType === 'airplane') {
       return 0.11529
     }
@@ -98,11 +98,11 @@ Calculator.prototype.getConversionFactor = function(journeySubmitted){
 
 // emissions of a car / fuel type / this part does not link yet
 Calculator.prototype.carJourneyFactor = function(journeySubmitted){
-  if (journeySubmitted.fuelType === 'Petrol') {
+  if (journeySubmitted.fuelType === 'petrol') {
     return 0.22715;
-  } else if (journeySubmitted.fuelType === 'Diesel') {
+  } else if (journeySubmitted.fuelType === 'diesel') {
     return 0.11145;
-  } else if (journeySubmitted.fuelType === 'Hybrid') {
+  } else if (journeySubmitted.fuelType === 'hybrid') {
     return 0.02255 +0.00622;
   }
 };
